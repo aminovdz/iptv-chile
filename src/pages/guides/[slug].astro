@@ -1,0 +1,316 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import StickyHeader from '../../components/StickyHeader.astro';
+import Footer from '../../components/Footer.astro';
+import FloatingWhatsApp from '../../components/FloatingWhatsApp.astro';
+import { getCollection, type CollectionEntry } from 'astro:content';
+import { Calendar, Clock, ChevronRight, Share2, CheckCircle2, ArrowLeft } from 'lucide-astro';
+
+export async function getStaticPaths() {
+  const guides = await getCollection('guides');
+  return guides.map((guide) => ({
+    params: { slug: guide.slug },
+    props: { guide },
+  }));
+}
+
+interface Props {
+  guide: CollectionEntry<'guides'>;
+}
+
+const { guide } = Astro.props;
+const { Content } = await guide.render();
+
+const allGuides = await getCollection('guides');
+const relatedGuides = allGuides.filter((g) => g.slug !== guide.slug).slice(0, 2);
+
+const siteUrl = "https://chileiptv.live";
+const pageUrl = `${siteUrl}/guides/${guide.slug}`;
+
+const articleSchema = {
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": guide.data.title,
+  "description": guide.data.description,
+  "inLanguage": "es-CL",
+  "author": {
+    "@type": "Organization",
+    "name": guide.data.author,
+    "url": siteUrl
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "IPTV Chile Oficial",
+    "url": siteUrl,
+    "logo": {
+      "@type": "ImageObject",
+      "url": `${siteUrl}/favicon.svg`
+    }
+  },
+  "datePublished": guide.data.pubDate.toISOString(),
+  "dateModified": guide.data.updatedDate ? guide.data.updatedDate.toISOString() : guide.data.pubDate.toISOString(),
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": pageUrl
+  }
+};
+---
+
+<Layout 
+  title={`${guide.data.title} | Guía IPTV Chile`} 
+  description={guide.data.description}
+  jsonLd={articleSchema}
+>
+  <StickyHeader />
+
+  <main class="min-h-screen pt-28 pb-20 bg-slate-950 text-slate-100">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Breadcrumbs -->
+      <nav class="flex items-center gap-2 text-xs text-slate-400 mb-8 overflow-x-auto whitespace-nowrap" aria-label="Breadcrumb">
+        <a href="/" class="hover:text-primary transition-colors">Inicio</a>
+        <span>/</span>
+        <a href="/guides" class="hover:text-primary transition-colors">Guías</a>
+        <span>/</span>
+        <span class="text-slate-300 truncate max-w-xs">{guide.data.title}</span>
+      </nav>
+
+      <!-- Back Link -->
+      <div class="mb-6">
+        <a href="/guides" class="inline-flex items-center gap-2 text-xs font-semibold text-slate-400 hover:text-white transition-colors">
+          <ArrowLeft class="w-3.5 h-3.5" />
+          <span>Volver al índice de guías</span>
+        </a>
+      </div>
+
+      <!-- Article Header -->
+      <header class="space-y-4 pb-8 border-b border-white/10 mb-10">
+        <div class="flex flex-wrap items-center gap-3 text-xs">
+          <span class="px-3 py-1 rounded-full bg-primary/20 text-primary-light font-semibold border border-primary/30">
+            {guide.data.category}
+          </span>
+          <span class="flex items-center gap-1 text-slate-400">
+            <Calendar class="w-3.5 h-3.5" />
+            Actualizado el {guide.data.updatedDate ? guide.data.updatedDate.toLocaleDateString('es-CL', { year: 'numeric', month: 'long', day: 'numeric' }) : guide.data.pubDate.toLocaleDateString('es-CL', { year: 'numeric', month: 'long', day: 'numeric' })}
+          </span>
+          <span class="flex items-center gap-1 text-slate-400">
+            <Clock class="w-3.5 h-3.5" />
+            Lectura técnica de 8 min
+          </span>
+        </div>
+
+        <h1 class="text-3xl sm:text-5xl font-black text-white tracking-tight leading-tight">
+          {guide.data.title}
+        </h1>
+
+        <p class="text-slate-300 text-base sm:text-lg leading-relaxed">
+          {guide.data.description}
+        </p>
+
+        <div class="flex items-center justify-between pt-4 text-xs text-slate-400">
+          <div class="flex items-center gap-2">
+            <div class="w-8 h-8 rounded-full bg-primary/20 border border-primary/30 flex items-center justify-center text-primary-light font-bold">
+              CL
+            </div>
+            <div>
+              <p class="text-white font-medium">{guide.data.author}</p>
+              <p class="text-[11px] text-slate-400">Especialistas en Streaming IP para Chile</p>
+            </div>
+          </div>
+
+          <div class="flex items-center gap-2">
+            <span class="hidden sm:inline">Compartir:</span>
+            <button 
+              onclick="navigator.clipboard.writeText(window.location.href); alert('Enlace copiado al portapapeles');" 
+              class="px-3 py-1.5 rounded-lg bg-white/5 hover:bg-white/10 border border-white/10 text-slate-300 flex items-center gap-1.5 transition-all text-xs"
+              title="Copiar enlace del artículo"
+            >
+              <Share2 class="w-3.5 h-3.5" />
+              <span>Copiar Enlace</span>
+            </button>
+          </div>
+        </div>
+      </header>
+
+      <!-- Guide Featured Image -->
+      {guide.data.heroImage && (
+        <div class="mb-12 rounded-3xl overflow-hidden border border-white/10 shadow-2xl bg-[#0a0c16]">
+          <img 
+            src={guide.data.heroImage} 
+            alt={guide.data.heroImageAlt || guide.data.title}
+            width="1200"
+            height="675"
+            loading="eager"
+            decoding="async"
+            class="w-full h-auto aspect-video object-cover"
+          />
+        </div>
+      )}
+
+      <!-- Article Body with Custom Markdown Typography Styles -->
+      <article class="guide-content space-y-6 text-slate-300 text-base leading-relaxed">
+        <Content />
+      </article>
+
+      <!-- In-Article Conversion Card -->
+      <section class="my-16 glass-card rounded-3xl p-8 border border-primary/30 bg-gradient-to-br from-primary/10 via-slate-900 to-slate-950 text-center relative overflow-hidden">
+        <div class="max-w-xl mx-auto space-y-4">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-semibold">
+            <CheckCircle2 class="w-3.5 h-3.5" />
+            <span>Garantía de Satisfacción 24 Horas</span>
+          </div>
+          <h2 class="text-2xl sm:text-3xl font-black text-white">¿Listo para probar la señal en tu Smart TV?</h2>
+          <p class="text-slate-300 text-sm leading-relaxed">
+            Contrata hoy con servidor local en Chile, tecnología Anti-Cortes 9.2 y soporte dedicado en español para cualquier pantalla de tu casa.
+          </p>
+          <div class="pt-4 flex flex-wrap justify-center gap-4">
+            <a
+              href="https://wa.me/18036582620?text=Hola,%20leí%20la%20guía%20en%20su%20web%20y%20quiero%20activar%20mi%20servicio"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="px-8 py-3.5 rounded-xl bg-emerald-500 hover:bg-emerald-600 text-slate-950 font-bold text-sm transition-all shadow-lg shadow-emerald-500/20"
+            >
+              Activar por WhatsApp
+            </a>
+            <a
+              href="/#precios"
+              class="px-8 py-3.5 rounded-xl bg-primary hover:bg-primary-dark text-white font-semibold text-sm transition-all shadow-lg shadow-primary/25"
+            >
+              Ver Planes Desde $35 USD/Año
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Tags & Meta -->
+      <div class="pt-8 border-t border-white/10 flex flex-wrap items-center justify-between gap-4 text-xs text-slate-400 mb-16">
+        <div class="flex flex-wrap items-center gap-2">
+          <span class="text-white font-medium">Temas:</span>
+          {guide.data.tags.map((tag) => (
+            <span class="px-2.5 py-1 rounded-md bg-white/5 border border-white/10 text-slate-300">
+              #{tag}
+            </span>
+          ))}
+        </div>
+      </div>
+
+      <!-- Related Guides -->
+      {relatedGuides.length > 0 && (
+        <section class="pt-10 border-t border-white/10">
+          <h2 class="text-xl font-bold text-white mb-6">Guías Recomendadas para Ti</h2>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            {relatedGuides.map((rel) => (
+              <a 
+                href={`/guides/${rel.slug}`} 
+                class="glass-card rounded-2xl p-6 border border-white/10 hover:border-primary/40 transition-all group block"
+              >
+                <span class="text-xs text-primary-light font-semibold">{rel.data.category}</span>
+                <h3 class="text-base font-bold text-white group-hover:text-primary-light transition-colors mt-2 leading-snug">
+                  {rel.data.title}
+                </h3>
+                <p class="text-slate-400 text-xs mt-2 line-clamp-2">
+                  {rel.data.description}
+                </p>
+                <div class="mt-4 flex items-center gap-1 text-xs font-semibold text-primary">
+                  <span>Leer guía</span>
+                  <ChevronRight class="w-3 h-3" />
+                </div>
+              </a>
+            ))}
+          </div>
+        </section>
+      )}
+
+    </div>
+  </main>
+
+  <FloatingWhatsApp />
+  <Footer />
+</Layout>
+
+<style is:global>
+  /* Markdown Content Typography Custom Styling */
+  .guide-content h2 {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: #ffffff;
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    letter-spacing: -0.025em;
+  }
+  @media (min-width: 640px) {
+    .guide-content h2 {
+      font-size: 1.875rem;
+    }
+  }
+  .guide-content h3 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #f1f5f9;
+    margin-top: 1.75rem;
+    margin-bottom: 0.75rem;
+  }
+  .guide-content p {
+    margin-bottom: 1.25rem;
+    color: #cbd5e1;
+    line-height: 1.8;
+  }
+  .guide-content strong {
+    color: #ffffff;
+    font-weight: 600;
+  }
+  .guide-content ul, .guide-content ol {
+    margin-top: 0.75rem;
+    margin-bottom: 1.5rem;
+    padding-left: 1.5rem;
+    color: #cbd5e1;
+  }
+  .guide-content ul {
+    list-style-type: disc;
+  }
+  .guide-content ol {
+    list-style-type: decimal;
+  }
+  .guide-content li {
+    margin-bottom: 0.5rem;
+    line-height: 1.7;
+  }
+  .guide-content hr {
+    border-color: rgba(255, 255, 255, 0.1);
+    margin: 2.5rem 0;
+  }
+  .guide-content table {
+    width: 100%;
+    margin: 2rem 0;
+    border-collapse: collapse;
+    font-size: 0.875rem;
+    overflow-x: auto;
+    display: block;
+  }
+  .guide-content th {
+    background-color: rgba(255, 255, 255, 0.05);
+    color: #ffffff;
+    padding: 0.75rem 1rem;
+    text-align: left;
+    font-weight: 700;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  .guide-content td {
+    padding: 0.75rem 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    color: #cbd5e1;
+  }
+  .guide-content tr:nth-child(even) {
+    background-color: rgba(255, 255, 255, 0.02);
+  }
+  .guide-content code {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #38bdf8;
+    padding: 0.2rem 0.4rem;
+    border-radius: 0.375rem;
+    font-size: 0.875em;
+    font-family: monospace;
+  }
+</style>

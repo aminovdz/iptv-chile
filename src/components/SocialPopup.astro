@@ -1,0 +1,86 @@
+---
+import { CheckCircle2, Tv, Sparkles, MapPin } from 'lucide-astro';
+---
+
+<div 
+  id="social-toast"
+  class="fixed bottom-6 left-6 z-40 max-w-xs sm:max-w-sm bg-[#0D0D14]/95 border border-white/10 rounded-2xl p-4 shadow-2xl backdrop-blur-xl transition-all duration-500 transform translate-y-8 opacity-0 pointer-events-none"
+  aria-live="polite"
+>
+  <div class="flex items-start gap-3">
+    <!-- Icon or Avatar -->
+    <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-red-600 to-blue-700 flex items-center justify-center text-white shrink-0 shadow-md">
+      <Tv class="w-5 h-5" />
+    </div>
+
+    <!-- Details -->
+    <div class="flex-1 text-left">
+      <div class="flex items-center justify-between text-[11px] mb-0.5">
+        <span class="font-bold text-white" id="social-name">Rodrigo M.</span>
+        <span class="text-slate-400 text-[10px]" id="social-time">Hace 3 min</span>
+      </div>
+
+      <p class="text-xs text-slate-300 leading-snug">
+        Acaba de activar <strong class="text-red-400 font-semibold" id="social-action">Plan Anual 12 Meses</strong>
+      </p>
+
+      <div class="mt-1.5 flex items-center gap-1.5 text-[10px] text-slate-400 font-medium">
+        <MapPin class="w-3 h-3 text-red-500" />
+        <span id="social-city">Santiago, Chile</span>
+        <span>•</span>
+        <span class="text-emerald-400 font-semibold flex items-center gap-0.5">
+          <CheckCircle2 class="w-2.5 h-2.5" /> Verificado
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const purchases = [
+    { name: 'Rodrigo M.', city: 'Santiago (Las Condes)', action: 'Plan Anual 12 Meses (4K)', time: 'Hace 3 min' },
+    { name: 'Alejandra P.', city: 'Viña del Mar', action: 'Plan Anual 12 Meses + 1 Mes Gratis', time: 'Hace 7 min' },
+    { name: 'Cristian V.', city: 'Concepción (Biobío)', action: 'Prueba Gratis 24 Horas', time: 'Hace 11 min' },
+    { name: 'Felipe T.', city: 'Antofagasta', action: 'Plan 6 Meses Semestral', time: 'Hace 15 min' },
+    { name: 'Camila S.', city: 'Temuco', action: 'Plan Anual 12 Meses', time: 'Hace 22 min' },
+    { name: 'Ignacio D.', city: 'La Serena', action: 'Plan Trimestral 3 Meses', time: 'Hace 28 min' },
+    { name: 'Sebastián G.', city: 'Puerto Montt', action: 'Plan Anual 12 Meses', time: 'Hace 35 min' },
+    { name: 'Macarena B.', city: 'Valparaíso', action: 'Prueba Gratis 24 Horas', time: 'Hace 42 min' }
+  ];
+
+  const toast = document.getElementById('social-toast');
+  const nameEl = document.getElementById('social-name');
+  const cityEl = document.getElementById('social-city');
+  const actionEl = document.getElementById('social-action');
+  const timeEl = document.getElementById('social-time');
+
+  let currentIndex = 0;
+
+  const showNextPurchase = () => {
+    if (!toast || !nameEl || !cityEl || !actionEl || !timeEl) return;
+
+    const data = purchases[currentIndex];
+    nameEl.textContent = data.name;
+    cityEl.textContent = data.city;
+    actionEl.textContent = data.action;
+    timeEl.textContent = data.time;
+
+    // Fade in
+    toast.classList.remove('translate-y-8', 'opacity-0', 'pointer-events-none');
+    toast.classList.add('translate-y-0', 'opacity-100');
+
+    // Hold 5 seconds
+    setTimeout(() => {
+      // Fade out
+      toast.classList.remove('translate-y-0', 'opacity-100');
+      toast.classList.add('translate-y-8', 'opacity-0', 'pointer-events-none');
+
+      currentIndex = (currentIndex + 1) % purchases.length;
+      // Wait 18 seconds before showing next
+      setTimeout(showNextPurchase, 18000);
+    }, 5500);
+  };
+
+  // Initial delay of 8 seconds before first popup
+  setTimeout(showNextPurchase, 8000);
+</script>

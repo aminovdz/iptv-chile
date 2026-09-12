@@ -1,0 +1,224 @@
+---
+import Layout from '../layouts/Layout.astro';
+import StickyHeader from '../components/StickyHeader.astro';
+import Hero from '../components/Hero.astro';
+import LiveScores from '../components/LiveScores.astro';
+import FeatureGrid from '../components/FeatureGrid.astro';
+import PricingCard from '../components/PricingCard.astro';
+import ReferralBanner from '../components/ReferralBanner.astro';
+import UserReviewsSection from '../components/UserReviewsSection.astro';
+import ProcessSteps from '../components/ProcessSteps.astro';
+import SupportedDevices from '../components/SupportedDevices.astro';
+import CitiesList from '../components/CitiesList.astro';
+import ContactForm from '../components/ContactForm.astro';
+import FAQSection from '../components/FAQSection.astro';
+import CTASection from '../components/CTASection.astro';
+import Footer from '../components/Footer.astro';
+
+// Engagement & Conversion Popups
+import ExitPopup from '../components/ExitPopup.astro';
+import GroupsPopup from '../components/GroupsPopup.astro';
+import FloatingWhatsApp from '../components/FloatingWhatsApp.astro';
+import SocialPopup from '../components/SocialPopup.astro';
+import { Trophy, Tv, Flame, CheckCircle2, ShieldCheck, Zap } from 'lucide-astro';
+
+const pageTitle = "Fútbol Chileno en Vivo 4K | Señales Deportivas & Liga Chilena sin Cortes — iptv CHILE";
+const pageDescription = "Sintoniza todos los partidos de Colo-Colo, U. de Chile, U. Católica y la Copa Libertadores con chile iptv en 4K UHD. Señal deportiva estable sin freeze a 60 FPS.";
+---
+
+<Layout 
+  title={pageTitle}
+  description={pageDescription}
+>
+  <StickyHeader />
+
+  <main>
+    <!-- 1. Hero Section (Sports Variant) -->
+    <Hero 
+      badge="⚽ La Casa del Fútbol Chileno & Internacional en 4K"
+      headline="Chile IPTV Deportes — Mira la Liga Chilena y Torneos en Vivo sin Cortes"
+      subheadline="Vive la emoción de cada partido del Campeonato Nacional Chileno, la Copa Libertadores y la Champions League con chile iptv en 60 FPS reales. Olvídate de pagar tarifas absurdas a operadores de cable y disfruta de la mejor transmisión deportiva en tu Smart TV o celular."
+    />
+
+    <!-- Visual Proof Banner: Sports in 4K -->
+    <section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 my-10">
+      <div class="rounded-3xl overflow-hidden border border-red-500/20 shadow-2xl shadow-red-500/10 bg-[#0d0f18] relative group">
+        <img 
+          src="/images/sports-chile-live.webp" 
+          alt="Transmisión en directo del fútbol chileno en Smart TV con calidad 4K UHD a 60 FPS y servidores locales en Santiago" 
+          width="1200"
+          height="675"
+          loading="lazy"
+          decoding="async"
+          class="w-full h-auto aspect-video object-cover group-hover:scale-[1.01] transition-transform duration-700"
+        />
+        <div class="p-6 sm:p-8 bg-[#090b14] border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <div class="text-left">
+            <h3 class="text-lg sm:text-xl font-bold text-white">Transmisión deportiva sin cortes en toda la temporada</h3>
+            <p class="text-xs sm:text-sm text-slate-300">Incluye todas las señales deportivas prémium en 4K, copas internacionales y partidos de la Roja.</p>
+          </div>
+          <a href="#precios" class="px-6 py-3 rounded-xl bg-red-600 hover:bg-red-500 text-white font-bold text-xs uppercase tracking-wider transition-colors shrink-0 shadow-lg shadow-red-600/25">
+            Ver Planes Deportivos
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. Features Grid (Sports Focused) -->
+    <FeatureGrid 
+      title="Por Qué los Hinchas del Fútbol Eligen iptv CHILE"
+      subtitle="Infraestructura con balanceo de carga en servidores de Santiago para evitar el buffering durante el Superclásico y las instancias definitorias del torneo chileno."
+    />
+
+    <!-- 3. Pricing Section (12-Month Plan Prominent) -->
+    <PricingCard 
+      title="Planes Especiales de Fútbol y Deportes en Vivo"
+      subtitle="Asegura toda la temporada del Campeonato Chileno y torneos Conmebol desde solo $5 USD al mes con activación al tiro."
+    />
+
+    <!-- 4. Referrer (Referral Banner) -->
+    <ReferralBanner />
+
+    <!-- 5. Testimonials (User Reviews) -->
+    <UserReviewsSection 
+      title="Testimonios de Fanáticos del Deporte en Todo Chile"
+      subtitle="Descubre por qué miles de hinchas en Santiago, Valparaíso, Concepción y regiones disfrutan sus partidos con nosotros."
+    />
+
+    <!-- 6. How to Process (Steps) -->
+    <ProcessSteps 
+      title="Empieza a Ver el Próximo Partido en 3 Minutos"
+      subtitle="Elige tu plan, recibe tus accesos por WhatsApp y sintoniza los canales deportivos prémium en tu televisor de inmediato."
+    />
+
+    <!-- 7. Supported Devices -->
+    <SupportedDevices 
+      title="Mira los Partidos en Cualquier Pantalla y Lugar"
+      subtitle="Compatible con Smart TV, Fire TV Stick, computadores y teléfonos celulares en redes 4G y 5G."
+    />
+
+    <!-- 8. Cities (Local SEO Grid) -->
+    <CitiesList 
+      title="Servidores Locales para Fanáticos en Todo Chile"
+      subtitle="Conexión optimizada para usuarios de VTR, Movistar, Mundo Pacífico, Entel y Claro en cada región."
+    />
+
+    <!-- Comprehensive Sports SEO In-Depth Content (~1,200 Words Context) -->
+    <section class="py-20 bg-[#060609] border-t border-white/5 text-slate-300">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="text-center max-w-3xl mx-auto mb-14">
+          <span class="text-xs uppercase font-bold text-red-400 tracking-wider">Especial Deportes 2026</span>
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-white mt-2 mb-4 tracking-tight">
+            Guía Definitiva para Ver Fútbol Chileno e Internacional en Vivo por Internet
+          </h2>
+          <p class="text-sm text-slate-400 leading-relaxed">
+            Cómo sintonizar todas las señales de fútbol y canales deportivos en alta definición sin pagar los $60.000 mensuales del cable tradicional.
+          </p>
+        </div>
+
+        <div class="prose prose-invert max-w-none space-y-8 text-sm sm:text-base leading-relaxed">
+          
+          <div class="p-8 rounded-3xl bg-[#0D0D14] border border-white/10">
+            <h3 class="text-xl font-bold text-white mb-3 flex items-center gap-2">
+              <Trophy class="w-5 h-5 text-amber-400" />
+              La Revolución del Streaming Deportivo en Chile
+            </h3>
+            <p>
+              El fútbol profesional en Chile ha dejado de ser exclusivo de las tradicionales y costosas cajas decodificadoras. Hoy en día, la búsqueda de <strong>chile iptv</strong> ha crecido exponencialmente debido a que los aficionados exigen inmediatez, portabilidad y sobre todo, una transmisión fluida en momentos de alta tensión. Torneos como la Primera División de Chile, la Copa Chile, la Copa Conmebol Libertadores y la Copa Sudamericana requieren servidores capaces de soportar miles de conexiones concurrentes sin pérdida de paquetes de datos ni caídas de resolución.
+            </p>
+            <p class="mt-3">
+              En <strong>iptv CHILE</strong> contamos con nodos CDN propios en Santiago y regiones para asegurar que los canales prémium de deportes mantengan una tasa constante de 60 cuadros por segundo (FPS) en 4K real. Esto marca una diferencia abrumadora frente a transmisiones piratas de baja calidad que sufren desfase de hasta 2 minutos y continuos congelamientos de pantalla.
+            </p>
+          </div>
+
+          <div class="p-8 rounded-3xl bg-[#0D0D14] border border-white/10">
+            <h3 class="text-xl font-bold text-white mb-4 flex items-center gap-2">
+              <Flame class="w-5 h-5 text-red-500" />
+              Calendario de Grandes Eventos Deportivos Transmitidos en Vivo
+            </h3>
+            <div class="overflow-x-auto">
+              <table class="w-full text-left text-xs sm:text-sm border-collapse">
+                <thead>
+                  <tr class="border-b border-white/10 text-white">
+                    <th class="py-3 px-4">Competencia Deportiva</th>
+                    <th class="py-3 px-4 text-red-400">Canales de Transmisión</th>
+                    <th class="py-3 px-4 text-emerald-400">Calidad en iptv CHILE</th>
+                  </tr>
+                </thead>
+                <tbody class="divide-y divide-white/5 text-slate-300">
+                  <tr>
+                    <td class="py-3 px-4 font-semibold text-white">Campeonato Nacional Chileno (Primera División)</td>
+                    <td class="py-3 px-4">Señales Deportivas Prémium HD y 4K</td>
+                    <td class="py-3 px-4 text-emerald-400 font-bold">4K UHD @ 60 FPS sin buffering</td>
+                  </tr>
+                  <tr>
+                    <td class="py-3 px-4 font-semibold text-white">Superclásico (Colo-Colo vs. U. de Chile)</td>
+                    <td class="py-3 px-4">Transmisión Oficial en Vivo a 60 FPS</td>
+                    <td class="py-3 px-4 text-emerald-400 font-bold">Servidores con prioridad anti-saturación</td>
+                  </tr>
+                  <tr>
+                    <td class="py-3 px-4 font-semibold text-white">Copa Conmebol Libertadores & Sudamericana</td>
+                    <td class="py-3 px-4">Señales Internacionales en Español</td>
+                    <td class="py-3 px-4 text-emerald-400 font-bold">FHD / 4K nativo con audio estéreo</td>
+                  </tr>
+                  <tr>
+                    <td class="py-3 px-4 font-semibold text-white">Eliminatorias Sudamericanas (La Roja)</td>
+                    <td class="py-3 px-4">Señales Nacionales en Abierto HD</td>
+                    <td class="py-3 px-4 text-emerald-400 font-bold">Señal abierta en alta definición limpia</td>
+                  </tr>
+                  <tr>
+                    <td class="py-3 px-4 font-semibold text-white">UEFA Champions League & Premier League</td>
+                    <td class="py-3 px-4">Canales Deportivos Europeos en 4K</td>
+                    <td class="py-3 px-4 text-emerald-400 font-bold">Resolución 4K Ultra HD a 60 cuadros</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="p-8 rounded-3xl bg-[#0D0D14] border border-white/10">
+            <h3 class="text-xl font-bold text-white mb-3">
+              ¿Cómo Evitar el Buffering Durante Partidos Decisivos?
+            </h3>
+            <p>
+              El principal dolor de cabeza de los hinchas al contratar un <strong>chile iptv</strong> de baja calidad es que la señal funciona bien en días normales, pero se congela justo en el minuto 85 del clásico o durante la tanda de penales de una final. Esto se debe a que los revendedores improvisados saturan servidores compartidos sin ancho de banda dedicado para el tráfico chileno.
+            </p>
+            <p class="mt-3">
+              En <strong>iptv CHILE</strong> implementamos balanceo dinámico con más de 117 servidores conectados directamente a los puntos de intercambio de tráfico (PIT) de Santiago. Si un nodo experimenta un incremento repentino de usuarios, el flujo se redistribuye de manera instantánea y transparente, asegurando que nunca te pierdas una jugada trascendental del partido.
+            </p>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Real-Time Official Live Sports Scores (Bottom Section) -->
+    <LiveScores />
+
+    <!-- 9. Contact Component -->
+    <ContactForm 
+      title="¿Tienes Dudas sobre la Cobertura de Tu Equipo Favorito?"
+      subtitle="Escríbenos por WhatsApp y te confirmamos al tiro los canales disponibles para los partidos de este fin de semana."
+    />
+
+    <!-- 10. FAQ Section -->
+    <FAQSection />
+
+    <!-- 11. Final CTA Section -->
+    <CTASection 
+      title="No Te Pierdas Ningún Partido de la Liga Chilena: Activa Hoy Tu Cuenta 4K"
+      description="Súmate a la mayor comunidad de hinchas que disfrutan del fútbol sin pagar de más. Activación instantánea por WhatsApp en menos de 2 minutos."
+      buttonText="Contratar Plan Anual de Deportes ($35 USD)"
+    />
+  </main>
+
+  <Footer />
+
+  <!-- Marketing & Retention Widgets -->
+  <FloatingWhatsApp />
+  <SocialPopup />
+  <GroupsPopup />
+  <ExitPopup />
+</Layout>

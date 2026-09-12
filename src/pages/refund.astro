@@ -1,0 +1,107 @@
+---
+import Layout from '../layouts/Layout.astro';
+import StickyHeader from '../components/StickyHeader.astro';
+import Footer from '../components/Footer.astro';
+import FloatingWhatsApp from '../components/FloatingWhatsApp.astro';
+import { Clock, ShieldCheck, AlertCircle, MessageSquare, CheckCircle2, ArrowRight } from 'lucide-astro';
+---
+
+<Layout 
+  title="Política de Reembolso (Válida por 24 Horas) | iptv CHILE"
+  description="Conoce nuestra política de devolución estricta de 24 horas en iptv CHILE. Proceso transparente, rápido y sin trámites engorrosos por WhatsApp."
+>
+  <StickyHeader />
+
+  <main class="py-16 sm:py-24 bg-[#060609] relative overflow-hidden">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      
+      <!-- Top Title -->
+      <div class="text-center mb-16">
+        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-red-600/15 border border-red-500/30 text-red-400 text-xs font-bold uppercase tracking-wider mb-4">
+          <Clock class="w-4 h-4 text-amber-400" />
+          <span>Garantía de Satisfacción de 24 Horas</span>
+        </div>
+        <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight mb-4">
+          Política de Reembolso Estricta de 24 Horas
+        </h1>
+        <p class="text-sm text-slate-300 max-w-2xl mx-auto leading-relaxed">
+          En iptv CHILE nos comprometemos con la total transparencia en la prestación de nuestros servicios de streaming multimedia.
+        </p>
+      </div>
+
+      <!-- Critical 24-Hour Notice Banner -->
+      <div class="p-6 sm:p-8 rounded-3xl bg-gradient-to-r from-red-950/40 via-[#131322] to-amber-950/30 border-2 border-red-500/40 mb-10 shadow-2xl">
+        <div class="flex items-start gap-4">
+          <div class="w-12 h-12 rounded-2xl bg-red-600/20 border border-red-500/40 flex items-center justify-center text-red-400 shrink-0">
+            <Clock class="w-6 h-6 animate-pulse" />
+          </div>
+          <div>
+            <h2 class="text-xl font-bold text-white mb-2">
+              Regla Estricta: Solicitud Válida Únicamente Dentro de las Primeras 24 Horas
+            </h2>
+            <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+              Debido a la naturaleza digital e instantánea de la activación de cuentas en servidores dedicados, <strong class="text-white">nuestra garantía de devolución y reembolso es válida exclusivamente durante las primeras 24 horas continuas</strong> inmediatamente posteriores a la entrega de las credenciales de acceso por WhatsApp o correo electrónico.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Detailed Terms -->
+      <div class="prose prose-invert max-w-none space-y-8 text-slate-300 text-sm leading-relaxed">
+        
+        <div class="p-6 rounded-2xl bg-[#0D0D14] border border-white/10">
+          <h3 class="text-lg font-bold text-white mb-3 flex items-center gap-2">
+            <CheckCircle2 class="w-4 h-4 text-emerald-400" />
+            Condiciones Aplicables para Solicitar un Reembolso
+          </h3>
+          <ul class="list-disc pl-5 space-y-2 text-slate-300">
+            <li>La solicitud debe ser enviada formalmente por el usuario antes de cumplirse exactamente <strong>24 horas</strong> desde el despacho de los accesos.</li>
+            <li>El usuario debe haber reportado la incidencia técnica a nuestro equipo de soporte por WhatsApp y haber seguido los pasos básicos de verificación (comprobación de conexión a internet, prueba de la app sugerida y reinicio de router).</li>
+            <li>Si el fallo técnico persiste y se comprueba que se origina en nuestra infraestructura de servidores, se procesará el reembolso sin preguntas engorrosas.</li>
+          </ul>
+        </div>
+
+        <div class="p-6 rounded-2xl bg-[#0D0D14] border border-white/10">
+          <h3 class="text-lg font-bold text-white mb-3 flex items-center gap-2">
+            <AlertCircle class="w-4 h-4 text-red-400" />
+            Casos en los que NO Aplica Reembolso
+          </h3>
+          <ul class="list-disc pl-5 space-y-2 text-slate-300">
+            <li>Solicitudes realizadas <strong>después de transcurridas las 24 horas iniciales</strong> desde la activación del servicio.</li>
+            <li>Problemas derivados de una velocidad de conexión insuficiente en el hogar del cliente (menos de 15 Mbps de velocidad nacional o WiFi con alta interferencia).</li>
+            <li>Dispositivos incompatibles o modelos obsoletos sobre los cuales el cliente no consultó con soporte antes de la compra.</li>
+            <li>Suspensión de la cuenta por incumplimiento de las reglas de uso (uso simultáneo indebido en múltiples direcciones IP diferentes).</li>
+          </ul>
+        </div>
+
+        <div class="p-6 rounded-2xl bg-[#0D0D14] border border-white/10">
+          <h3 class="text-lg font-bold text-white mb-3">Plazo de Procesamiento del Reembolso</h3>
+          <p>
+            Una vez aprobada la solicitud de devolución por el equipo administrativo, el reembolso se emite dentro de un plazo de <strong>24 a 48 horas hábiles</strong> a través del mismo método con el que se realizó el pago (WebPay, Mercado Pago, Flow.cl, Khipu o billetera criptográfica). Los tiempos de acreditación en la cuenta bancaria del cliente pueden depender de la entidad emisora de su tarjeta en Chile.
+          </p>
+        </div>
+
+        <!-- How to Request Refund Box -->
+        <div class="p-6 rounded-2xl bg-white/[0.03] border border-white/10 text-center">
+          <h3 class="text-base font-bold text-white mb-2">¿Necesitas Solicitar Asistencia o un Reembolso?</h3>
+          <p class="text-xs text-slate-400 mb-6">Contáctanos de inmediato indicando tu comprobante y número de cuenta:</p>
+          <a 
+            href="https://wa.me/18036582620?text=Hola!%20Deseo%20solicitar%20soporte%20técnico%20o%20evaluar%20mi%20garantía%20de%2024%20horas%20en%20iptv%20CHILE" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            class="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-gradient-to-r from-emerald-600 to-emerald-700 text-white font-bold text-xs uppercase tracking-wider hover:from-emerald-500 hover:to-emerald-600 shadow-lg shadow-emerald-600/30 transition-all"
+          >
+            <MessageSquare class="w-4 h-4" />
+            <span>Contactar a Soporte por WhatsApp</span>
+            <ArrowRight class="w-4 h-4" />
+          </a>
+        </div>
+
+      </div>
+
+    </div>
+  </main>
+
+  <Footer />
+  <FloatingWhatsApp />
+</Layout>

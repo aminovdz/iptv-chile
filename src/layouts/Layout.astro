@@ -1,0 +1,265 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  canonicalUrl?: string;
+  lang?: string;
+  image?: string;
+  pageSchema?: any;
+}
+
+const {
+  title,
+  description,
+  canonicalUrl,
+  lang = 'es-CL',
+  image = '/images/og-chile-iptv.jpg',
+  pageSchema
+} = Astro.props;
+
+const siteUrl = Astro.site ? Astro.site.toString().replace(/\/$/, '') : 'https://chileiptv.live';
+const fullCanonical = canonicalUrl 
+  ? new URL(canonicalUrl, siteUrl).toString() 
+  : new URL(Astro.url.pathname, siteUrl).toString();
+
+// Base Organization & LocalBusiness JSON-LD Schema
+const baseSchema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": `${siteUrl}/#organization`,
+      "name": "iptv CHILE",
+      "url": siteUrl,
+      "logo": {
+        "@type": "ImageObject",
+        "url": `${siteUrl}/favicon.svg`,
+        "width": "512",
+        "height": "512"
+      },
+      "description": "Proveedor líder de streaming IPTV en Chile. Señal ultraestable en 4K, FHD y HD para Smart TV, Firestick, Android, iOS y PC, con activación inmediata y soporte directo por WhatsApp.",
+      "email": "contact@chileiptv.live",
+      "telephone": "+18036582620",
+      "contactPoint": [
+        {
+          "@type": "ContactPoint",
+          "telephone": "+18036582620",
+          "contactType": "customer service",
+          "email": "contact@chileiptv.live",
+          "availableLanguage": ["Spanish"],
+          "areaServed": "CL"
+        },
+        {
+          "@type": "ContactPoint",
+          "contactType": "technical support",
+          "email": "support@castvera.com",
+          "availableLanguage": ["Spanish"],
+          "areaServed": "CL"
+        }
+      ],
+      "sameAs": [
+        "https://whatsapp.com/channel/0029VayVaLpD8SE3bf8wMY3v",
+        "https://t.me/castvera_com"
+      ]
+    },
+    {
+      "@type": "LocalBusiness",
+      "@id": `${siteUrl}/#localbusiness`,
+      "name": "iptv CHILE",
+      "image": `${siteUrl}/favicon.svg`,
+      "telephone": "+18036582620",
+      "email": "contact@chileiptv.live",
+      "priceRange": "$5 - $35 USD",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Santiago",
+        "addressRegion": "Región Metropolitana",
+        "addressCountry": "CL"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": -33.4489,
+        "longitude": -70.6693
+      },
+      "areaServed": {
+        "@type": "Country",
+        "name": "Chile"
+      }
+    },
+    {
+      "@type": "Product",
+      "@id": `${siteUrl}/#product`,
+      "name": "Suscripción IPTV Chile Premium",
+      "description": description,
+      "image": `${siteUrl}/images/og-chile-iptv.jpg`,
+      "brand": {
+        "@type": "Brand",
+        "name": "iptv CHILE"
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.9",
+        "reviewCount": "2180",
+        "bestRating": "5",
+        "worstRating": "1"
+      },
+      "offers": {
+        "@type": "AggregateOffer",
+        "lowPrice": "5.00",
+        "highPrice": "35.00",
+        "priceCurrency": "USD",
+        "offerCount": "4",
+        "offers": [
+          {
+            "@type": "Offer",
+            "name": "Plan 12 Meses (Mejor Valor / Más Popular)",
+            "price": "35.00",
+            "priceCurrency": "USD",
+            "availability": "https://schema.org/InStock",
+            "url": `${siteUrl}/#precios`
+          },
+          {
+            "@type": "Offer",
+            "name": "Plan 6 Meses",
+            "price": "20.00",
+            "priceCurrency": "USD",
+            "availability": "https://schema.org/InStock",
+            "url": `${siteUrl}/#precios`
+          },
+          {
+            "@type": "Offer",
+            "name": "Plan 3 Meses",
+            "price": "10.00",
+            "priceCurrency": "USD",
+            "availability": "https://schema.org/InStock",
+            "url": `${siteUrl}/#precios`
+          },
+          {
+            "@type": "Offer",
+            "name": "Plan 1 Mes",
+            "price": "5.00",
+            "priceCurrency": "USD",
+            "availability": "https://schema.org/InStock",
+            "url": `${siteUrl}/#precios`
+          }
+        ]
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": `${fullCanonical}#breadcrumb`,
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Inicio",
+          "item": siteUrl
+        },
+        ...(Astro.url.pathname !== '/' ? [
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": title,
+            "item": fullCanonical
+          }
+        ] : [])
+      ]
+    },
+    ...(pageSchema ? [pageSchema] : [])
+  ]
+};
+---
+
+<!doctype html>
+<html lang={lang} class="scroll-smooth dark">
+  <head>
+    <BaseHead
+      title={title}
+      description={description}
+      canonicalUrl={fullCanonical}
+      image={image}
+    />
+    <script type="application/ld+json" set:html={JSON.stringify(baseSchema)} />
+  </head>
+  <body class="bg-[#060609] text-slate-100 font-sans antialiased selection:bg-red-600 selection:text-white min-h-screen flex flex-col relative overflow-x-hidden">
+    <!-- Ambient Background Lighting / Chilean Flag Glow -->
+    <div class="fixed inset-0 pointer-events-none z-0 overflow-hidden" aria-hidden="true">
+      <div class="absolute -top-40 left-1/4 w-[600px] h-[600px] bg-red-600/10 rounded-full blur-[140px]"></div>
+      <div class="absolute top-1/3 -right-40 w-[500px] h-[500px] bg-blue-600/10 rounded-full blur-[150px]"></div>
+      <div class="absolute bottom-10 left-10 w-[500px] h-[500px] bg-red-600/5 rounded-full blur-[160px]"></div>
+    </div>
+
+    <!-- Main Content Slot -->
+    <div class="relative z-10 flex flex-col min-h-screen">
+      <slot />
+    </div>
+  </body>
+</html>
+
+<style is:global>
+  @import "tailwindcss";
+
+  @theme {
+    --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    --font-display: 'Space Grotesk', 'Plus Jakarta Sans', sans-serif;
+
+    /* Chilean Identity Colors */
+    --color-primary: #DC2626;
+    --color-primary-hover: #B91C1C;
+    --color-primary-light: #EF4444;
+    --color-secondary: #0039A6;
+    --color-secondary-hover: #002D80;
+    --color-accent: #2563EB;
+    --color-surface: #0D0D14;
+    --color-surface-hover: #131320;
+    --color-border: #18182A;
+    --color-success: #059669;
+  }
+
+  :root {
+    --color-primary: #DC2626;
+    --color-primary-hover: #B91C1C;
+    --color-secondary: #0039A6;
+    --color-accent: #2563EB;
+    --color-surface: #0D0D14;
+    --color-border: #18182A;
+    --color-success: #059669;
+  }
+
+  /* Custom Glassmorphism utility classes */
+  .glass-card {
+    background: rgba(13, 13, 20, 0.75);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .glass-card-hover {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .glass-card-hover:hover {
+    border-color: rgba(220, 38, 38, 0.45);
+    box-shadow: 0 12px 30px -10px rgba(220, 38, 38, 0.25);
+    transform: translateY(-2px);
+  }
+
+  .text-gradient-red {
+    background: linear-gradient(135deg, #FFFFFF 30%, #EF4444 70%, #DC2626 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .text-gradient-chile {
+    background: linear-gradient(135deg, #FFFFFF 0%, #93C5FD 50%, #EF4444 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .text-gradient-gold {
+    background: linear-gradient(135deg, #FDE047 0%, #EAB308 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+</style>

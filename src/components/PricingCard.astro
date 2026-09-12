@@ -1,0 +1,251 @@
+---
+import { Check, Sparkles, Zap, ShieldCheck, CreditCard, MessageSquare, ArrowRight, Flame } from 'lucide-astro';
+
+interface Props {
+  id?: string;
+  title?: string;
+  subtitle?: string;
+}
+
+const {
+  id = 'precios',
+  title = 'Planes de iptv CHILE — Transparencia y Precios Justos',
+  subtitle = '¿Por qué pagar más de $60.000 al mes por VTR o Movistar? Elige tu suscripción sin contratos ni amarres, con activación al tiro y streaming 4K ultraestable.'
+} = Astro.props;
+
+// IMPORTANT: Always start the pricing table/cards with the 12-month plan prominently displayed
+const pricingPlans = [
+  {
+    name: '12 Meses (Plan Anual)',
+    badge: '🏆 MEJOR VALOR — EL MÁS ELEGIDO',
+    featured: true,
+    priceUSD: '35',
+    priceCLP: '$33.000 CLP',
+    monthlyEquiv: 'Menos de $2.800 CLP / mes',
+    savings: '¡AHORRA 45% + APP PREMIUM GRATIS!',
+    description: 'El plan definitivo para familias chilenas que cortan el cable. Incluye aplicación premium de reproducción gratis y cobertura total deportiva.',
+    features: [
+      'Calidad 4K Ultra HD & 60 FPS Reales',
+      '🎁 APP PREMIUM DE REPRODUCCIÓN GRATIS (Smart TV / Firestick)',
+      'Fútbol Chileno e Internacional en Vivo (Señales 4K)',
+      'Parrilla Completa de Señales Nacionales y Regionales en HD',
+      'Cine, Series y Canales Internacionales en Español',
+      'Servidores CDN Anti-Cortes con nodo en Santiago',
+      'Guía EPG Interactiva y TV en diferido (Catch-Up)',
+      'Compatible con Smart TV, Firestick, Android, iPhone y PC',
+      'Soporte Prioritario VIP 24/7 por WhatsApp'
+    ],
+    ctaText: 'Contratar 12 Meses ($35 USD / $33.000 CLP)',
+    whatsappMsg: 'Hola! Quiero contratar el Plan Anual de 12 Meses ($35 USD / $33.000 CLP) con la Aplicación Premium Gratis incluida.'
+  },
+  {
+    name: '6 Meses (Semestral)',
+    badge: 'OPCIÓN POPULAR',
+    featured: false,
+    priceUSD: '20',
+    priceCLP: '$19.000 CLP',
+    monthlyEquiv: '$3.160 CLP / mes',
+    savings: 'Ahorra 35% vs Mensual',
+    description: 'Ideal para seguir toda la primera o segunda rueda de la Liga Chilena y la Copa Libertadores.',
+    features: [
+      'Transmisión en 4K Ultra HD y 1080p FHD',
+      'Todo el Fútbol Chileno e Internacional en Vivo',
+      'Parrilla completa de señales chilenas abiertas',
+      'Servidores con tecnología Anti-Cortes 9.2',
+      'Guía programática EPG interactiva',
+      'Compatible con todos tus dispositivos',
+      'Asistencia técnica directa por WhatsApp'
+    ],
+    ctaText: 'Contratar 6 Meses ($20 USD / $19.000 CLP)',
+    whatsappMsg: 'Hola! Quiero contratar el Plan Semestral de 6 Meses ($20 USD / $19.000 CLP) de iptv CHILE.'
+  },
+  {
+    name: '3 Meses (Trimestral)',
+    badge: 'AHORRO TRIMESTRAL',
+    featured: false,
+    priceUSD: '10',
+    priceCLP: '$9.500 CLP',
+    monthlyEquiv: '$3.170 CLP / mes',
+    savings: 'Ahorra 30% vs Mensual',
+    description: 'Una excelente alternativa para disfrutar los meses decisivos de campeonatos y torneos.',
+    features: [
+      'Señal en 4K UHD y Full HD',
+      'Fútbol Chileno e Internacional en Directo',
+      'Canales de noticias, películas y series',
+      'Conexión estable sin buffering',
+      'Guía EPG de programación',
+      'Activación inmediata sin trámites'
+    ],
+    ctaText: 'Contratar 3 Meses ($10 USD / $9.500 CLP)',
+    whatsappMsg: 'Hola! Quiero contratar el Plan Trimestral de 3 Meses ($10 USD / $9.500 CLP) de iptv CHILE.'
+  },
+  {
+    name: '1 Mes (Mensual)',
+    badge: 'PRUEBA FLEXIBLE',
+    featured: false,
+    priceUSD: '5',
+    priceCLP: '$4.800 CLP',
+    monthlyEquiv: '$4.800 CLP / mes',
+    savings: 'Flexibilidad Mes a Mes',
+    description: 'Perfecto para probar el servicio durante un mes sin ningún tipo de compromiso a futuro.',
+    features: [
+      'Acceso completo a todos los canales',
+      'Deportes y señales nacionales en directo',
+      'Calidad FHD y 4K disponible',
+      'Activación rápida por WhatsApp',
+      'Sin contratos ni renovación forzada'
+    ],
+    ctaText: 'Contratar 1 Mes ($5 USD / $4.800 CLP)',
+    whatsappMsg: 'Hola! Quiero contratar el Plan de 1 Mes ($5 USD / $4.800 CLP) de iptv CHILE.'
+  }
+];
+---
+
+<section id={id} class="py-20 lg:py-28 bg-[#060609] relative overflow-hidden">
+  <!-- Glow Elements -->
+  <div class="absolute top-1/3 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-red-600/10 rounded-full blur-[160px] pointer-events-none" aria-hidden="true"></div>
+
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    
+    <!-- Section Header -->
+    <div class="text-center max-w-3xl mx-auto mb-16">
+      <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-red-600/10 border border-red-500/30 text-red-400 text-xs font-bold uppercase tracking-wider mb-4">
+        <Sparkles class="w-3.5 h-3.5" />
+        <span>Precios Accesibles & Sin Letra Chica</span>
+      </div>
+      
+      <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight mb-6">
+        {title}
+      </h2>
+      
+      <p class="text-base sm:text-lg text-slate-300 leading-relaxed">
+        {subtitle}
+      </p>
+
+      <!-- Chilean Price Anchor Comparison Callout -->
+      <div class="mt-6 inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-white/5 border border-white/10 text-xs text-slate-300">
+        <span>💡 Comparativa: El cable tradicional en Chile cuesta entre <strong>$40.000 y $70.000 CLP/mes</strong>. Con nosotros ahorras hasta un 85%.</span>
+      </div>
+    </div>
+
+    <!-- Pricing Cards Grid: 12-Month Plan First & Prominent -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 items-stretch">
+      {pricingPlans.map((plan) => (
+        <div class={`relative rounded-3xl p-6 sm:p-7 flex flex-col justify-between transition-all duration-300 ${
+          plan.featured 
+            ? 'bg-gradient-to-b from-[#131326] to-[#0A0D18] border-2 border-red-500 shadow-2xl shadow-red-600/25 lg:-translate-y-3 z-20' 
+            : 'bg-[#0D0D14]/80 border border-white/10 hover:border-white/20 backdrop-blur-xl hover:-translate-y-1'
+        }`}>
+          
+          <!-- Top Badge -->
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <span class={`text-[10px] font-black uppercase tracking-wider px-3 py-1 rounded-full ${
+                plan.featured 
+                  ? 'bg-gradient-to-r from-red-600 to-red-700 text-white shadow-md' 
+                  : 'bg-white/5 text-slate-400 border border-white/10'
+              }`}>
+                {plan.badge}
+              </span>
+            </div>
+
+            <!-- Plan Name -->
+            <h3 class="text-xl font-bold text-white mb-2">
+              {plan.name}
+            </h3>
+
+            <p class="text-xs text-slate-400 mb-4 leading-relaxed">
+              {plan.description}
+            </p>
+
+            {plan.featured && (
+              <div class="mb-5 p-3 rounded-2xl bg-gradient-to-r from-amber-500/15 via-red-500/15 to-amber-500/15 border border-amber-500/40 flex items-center gap-2.5">
+                <Sparkles class="w-5 h-5 text-amber-400 shrink-0 animate-pulse" />
+                <div class="text-left">
+                  <div class="text-[11px] font-extrabold text-amber-300 uppercase tracking-wide">¡PROMO EXCLUSIVA 12 MESES!</div>
+                  <div class="text-[11px] text-slate-200 leading-tight">Licencia de <strong>Aplicación Premium GRATIS</strong> incluida para Smart TV o Firestick.</div>
+                </div>
+              </div>
+            )}
+
+            <!-- Price Block -->
+            <div class="mb-6 p-4 rounded-2xl bg-white/[0.03] border border-white/5">
+              <div class="flex items-baseline gap-1">
+                <span class="text-4xl font-black text-white tracking-tight">${plan.priceUSD}</span>
+                <span class="text-xs font-semibold text-slate-400 uppercase">USD</span>
+                <span class="text-xs text-slate-500 ml-1">/ total</span>
+              </div>
+              <div class="mt-1 flex items-center justify-between text-xs">
+                <span class="font-bold text-emerald-400">{plan.priceCLP}</span>
+                <span class="text-[11px] text-slate-400 font-medium">({plan.monthlyEquiv})</span>
+              </div>
+              <div class="mt-2 text-[11px] font-bold text-yellow-400">
+                {plan.savings}
+              </div>
+            </div>
+
+            <!-- Features Checklist -->
+            <ul class="space-y-3 mb-8 text-xs text-slate-300">
+              {plan.features.map((feat) => (
+                <li class="flex items-start gap-2.5">
+                  <div class={`w-4 h-4 rounded-full flex items-center justify-center shrink-0 mt-0.5 ${
+                    plan.featured ? 'bg-red-500/20 text-red-400' : 'bg-emerald-500/20 text-emerald-400'
+                  }`}>
+                    <Check class="w-3 h-3 stroke-[3]" />
+                  </div>
+                  <span class="leading-tight">{feat}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <!-- Card CTA Button -->
+          <div class="pt-4 border-t border-white/10 space-y-3">
+            <a 
+              href={`https://wa.me/18036582620?text=${encodeURIComponent(plan.whatsappMsg)}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              class={`w-full py-3.5 px-4 rounded-xl font-bold text-xs sm:text-sm text-center flex items-center justify-center gap-2 transition-all duration-200 ${
+                plan.featured
+                  ? 'bg-gradient-to-r from-red-600 to-red-700 hover:from-red-500 hover:to-red-600 text-white shadow-lg shadow-red-600/30 hover:scale-[1.02]'
+                  : 'bg-white/10 hover:bg-white/15 text-white border border-white/10 hover:border-red-500/40'
+              }`}
+            >
+              <span>{plan.ctaText}</span>
+              <ArrowRight class="w-4 h-4" />
+            </a>
+
+            <div class="flex items-center justify-center gap-1.5 text-[10px] text-slate-400">
+              <ShieldCheck class="w-3 h-3 text-emerald-400" />
+              <span>Garantía 24 Horas & Activación al Tiro</span>
+            </div>
+          </div>
+
+        </div>
+      ))}
+    </div>
+
+    <!-- Supported Local Chilean Gateways -->
+    <div class="mt-14 p-6 rounded-2xl bg-white/[0.02] border border-white/10 flex flex-col md:flex-row items-center justify-between gap-4 text-xs">
+      <div class="flex items-center gap-3">
+        <CreditCard class="w-5 h-5 text-emerald-400 shrink-0" />
+        <div>
+          <span class="font-bold text-white">Métodos de Pago Disponibles en Chile:</span>
+          <p class="text-slate-400 mt-0.5">
+            Paga en pesos chilenos con WebPay Plus (Redcompra débito y crédito), Mercado Pago (hasta en 12 cuotas), Flow.cl, Khipu o Crypto (USDT/BTC).
+          </p>
+        </div>
+      </div>
+      <a 
+        href="https://wa.me/18036582620?text=Hola!%20Deseo%20hacer%20una%20consulta%20sobre%20los%20medios%20de%20pago%20en%20Chile."
+        target="_blank"
+        rel="noopener noreferrer"
+        class="whitespace-nowrap text-red-400 hover:text-red-300 font-semibold flex items-center gap-1"
+      >
+        <span>Consultar formas de pago</span>
+        <ArrowRight class="w-3.5 h-3.5" />
+      </a>
+    </div>
+
+  </div>
+</section>

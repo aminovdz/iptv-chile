@@ -1,0 +1,227 @@
+---
+import Layout from '../layouts/Layout.astro';
+import StickyHeader from '../components/StickyHeader.astro';
+import Hero from '../components/Hero.astro';
+import LiveScores from '../components/LiveScores.astro';
+import FeatureGrid from '../components/FeatureGrid.astro';
+import PricingCard from '../components/PricingCard.astro';
+import ReferralBanner from '../components/ReferralBanner.astro';
+import UserReviewsSection from '../components/UserReviewsSection.astro';
+import ProcessSteps from '../components/ProcessSteps.astro';
+import SupportedDevices from '../components/SupportedDevices.astro';
+import CitiesList from '../components/CitiesList.astro';
+import ContactForm from '../components/ContactForm.astro';
+import FAQSection from '../components/FAQSection.astro';
+import CTASection from '../components/CTASection.astro';
+import Footer from '../components/Footer.astro';
+
+// Engagement & Conversion Popups
+import ExitPopup from '../components/ExitPopup.astro';
+import GroupsPopup from '../components/GroupsPopup.astro';
+import FloatingWhatsApp from '../components/FloatingWhatsApp.astro';
+import SocialPopup from '../components/SocialPopup.astro';
+import { DollarSign, Scissors, ShieldCheck, CheckCircle2, TrendingDown, Sparkles } from 'lucide-astro';
+
+const pageTitle = "Corta el Cable en Chile | Ahorra más de $500.000 al Año con iptv CHILE";
+const pageDescription = "¿Cansado de pagar $60.000 al mes por VTR o Movistar? Pásate a iptv CHILE desde solo $5 USD al mes con calidad 4K, canales en vivo y sin contratos.";
+---
+
+<Layout 
+  title={pageTitle}
+  description={pageDescription}
+>
+  <StickyHeader />
+
+  <main>
+    <!-- 1. Hero Section (Cord-Cutting Variant) -->
+    <Hero 
+      badge="✂️ Corta el Cable en Chile & Ahorra Hasta un 85%"
+      headline="Chile IPTV Precios — ¿Por Qué Pagar $60.000 al Mes por Cable?"
+      subheadline="Dile adiós a las facturas abusivas de televisión por cable en Chile. Con chile iptv tienes acceso a todos los canales nacionales, señales deportivas y películas en 4K Ultra HD desde solo $5 USD al mes, sin decodificadores molestos ni contratos de permanencia."
+    />
+
+    <!-- Visual Proof Banner: Cord Cutting Savings -->
+    <section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 my-10">
+      <div class="rounded-3xl overflow-hidden border border-emerald-500/20 shadow-2xl shadow-emerald-500/10 bg-[#0d0f18] relative group">
+        <img 
+          src="/images/cable-cutting-chile.webp" 
+          alt="Ahorro familiar en Chile al sustituir el cable tradicional de VTR o Movistar por el servicio de streaming IPTV Chile en Smart TV 4K" 
+          width="1200"
+          height="675"
+          loading="lazy"
+          decoding="async"
+          class="w-full h-auto aspect-video object-cover group-hover:scale-[1.01] transition-transform duration-700"
+        />
+        <div class="p-6 sm:p-8 bg-[#090b14] border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <div class="text-left">
+            <h3 class="text-lg sm:text-xl font-bold text-white">Ahorra más de $480.000 CLP al año en entretenimiento</h3>
+            <p class="text-xs sm:text-sm text-slate-300">Sin arriendo de decodificadores, sin amarras de permanencia y con activación inmediata.</p>
+          </div>
+          <a href="#precios" class="px-6 py-3 rounded-xl bg-emerald-500 hover:bg-emerald-600 text-slate-950 font-bold text-xs uppercase tracking-wider transition-colors shrink-0 shadow-lg shadow-emerald-500/25">
+            Calcular Ahorro y Planes
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. Features Grid (Value & Savings Focus) -->
+    <FeatureGrid 
+      title="Por Qué Migrar del Cable Tradicional a iptv CHILE es la Decisión Inteligente"
+      subtitle="Obtén una experiencia visual superior con resolución 4K real, sin cobros por decodificadores extra y pagando una fracción de tu cuenta habitual."
+    />
+
+    <!-- 3. Pricing Section (12-Month Plan Prominent) -->
+    <PricingCard 
+      title="Planes Transparentes y Económicos en Pesos Chilenos"
+      subtitle="Elige tu suscripción sin renovación automática forzada. Paga con WebPay, Mercado Pago en cuotas o transferencia."
+    />
+
+    <!-- 4. Referrer (Referral Banner) -->
+    <ReferralBanner />
+
+    <!-- 5. Testimonials (User Reviews) -->
+    <UserReviewsSection 
+      title="Historias de Familias Chilenas que Cortaron el Cable"
+      subtitle="Comprueba cuánto dinero están ahorrando mes a mes nuestros usuarios en Santiago, Viña del Mar, Concepción y todo el país."
+    />
+
+    <!-- 6. How to Process (Steps) -->
+    <ProcessSteps 
+      title="Cómo Cortar el Cable y Activar iptv CHILE Hoy Mismo"
+      subtitle="Sin visitas técnicas ni agujeros en tu pared. Todo se activa 100% digital a través de WhatsApp."
+    />
+
+    <!-- 7. Supported Devices -->
+    <SupportedDevices 
+      title="Usa Tus Propios Smart TV Sin Pagar Arriendo de Cajas"
+      subtitle="Instala en tus televisores Samsung, LG, Firestick o celulares sin pagar arriendos mensuales por decodificadores."
+    />
+
+    <!-- 8. Cities (Local SEO Grid) -->
+    <CitiesList 
+      title="Familias Ahorrando en Todo el Territorio Nacional"
+      subtitle="Nodos de alta velocidad para conexiones de fibra óptica en las principales ciudades de Chile."
+    />
+
+    <!-- Comprehensive Financial Analysis & Cable Comparison Guide (~1,200 Words Context) -->
+    <section class="py-20 bg-[#060609] border-t border-white/5 text-slate-300">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="text-center max-w-3xl mx-auto mb-14">
+          <span class="text-xs uppercase font-bold text-red-400 tracking-wider">Análisis Financiero de Hogares</span>
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-white mt-2 mb-4 tracking-tight">
+            El Fin del Cable en Chile: ¿Cuánto Dinero Estás Perdiendo Cada Mes?
+          </h2>
+          <p class="text-sm text-slate-400 leading-relaxed">
+            Descubre el desglose real del gasto de televisión en Chile y cómo la adopción de iptv chile permite ahorrar cientos de miles de pesos al año.
+          </p>
+        </div>
+
+        <div class="prose prose-invert max-w-none space-y-8 text-sm sm:text-base leading-relaxed">
+          
+          <div class="p-8 rounded-3xl bg-[#0D0D14] border border-white/10">
+            <h3 class="text-xl font-bold text-white mb-3 flex items-center gap-2">
+              <TrendingDown class="w-5 h-5 text-emerald-400" />
+              La Realidad de las Facturas de Televisión por Cable en Chile
+            </h3>
+            <p>
+              En Chile, los operadores dominantes de telecomunicaciones han incrementado paulatinamente sus tarifas residenciales. Un plan estándar de televisión por cable con operadores como VTR, Movistar, Claro o Entel oscila habitualmente entre los <strong>$40.000 y $70.000 pesos chilenos mensuales</strong>. A esto se deben sumar cargos adicionales por cada decodificador extra en las habitaciones ($3.990 a $5.990 CLP por caja), más el paquete prémium obligatorio de deportes en alta definición (~$11.990 CLP adicionales).
+            </p>
+            <p class="mt-3">
+              Al cabo de un año, una familia chilena promedio termina desembolsando entre <strong>$600.000 y $950.000 pesos chilenos</strong> únicamente en servicios de televisión convencional, sufriendo además cobros de arriendo de equipos y cláusulas de salida anticipada. Frente a esta situación, la transición hacia <strong>chile iptv</strong> representa un ahorro de hasta un 85% del presupuesto familiar, permitiendo disfrutar de mayor variedad de canales y mejor resolución de video.
+            </p>
+          </div>
+
+          <div class="p-8 rounded-3xl bg-[#0D0D14] border border-white/10">
+            <h3 class="text-xl font-bold text-white mb-4 flex items-center gap-2">
+              <DollarSign class="w-5 h-5 text-yellow-400" />
+              Tabla Comparativa de Gastos Anuales: Cable vs. iptv CHILE
+            </h3>
+            <div class="overflow-x-auto">
+              <table class="w-full text-left text-xs sm:text-sm border-collapse">
+                <thead>
+                  <tr class="border-b border-white/10 text-white">
+                    <th class="py-3 px-4">Concepto de Gasto</th>
+                    <th class="py-3 px-4 text-slate-400">Cable Tradicional (1 Año)</th>
+                    <th class="py-3 px-4 text-emerald-400 font-bold">iptv CHILE (Plan Anual 12 Meses)</th>
+                  </tr>
+                </thead>
+                <tbody class="divide-y divide-white/5 text-slate-300">
+                  <tr>
+                    <td class="py-3 px-4 font-semibold text-white">Plan Base de Televisión</td>
+                    <td class="py-3 px-4 text-red-300">~$540.000 CLP ($45.000/mes)</td>
+                    <td class="py-3 px-4 text-emerald-400 font-bold">$33.000 CLP total ($35 USD)</td>
+                  </tr>
+                  <tr>
+                    <td class="py-3 px-4 font-semibold text-white">Paquete de Fútbol Prémium</td>
+                    <td class="py-3 px-4 text-red-300">~$143.880 CLP ($11.990/mes)</td>
+                    <td class="py-3 px-4 text-emerald-400 font-bold">$0 CLP (Completamente incluido)</td>
+                  </tr>
+                  <tr>
+                    <td class="py-3 px-4 font-semibold text-white">Arriendo de 2 Decodificadores Extra</td>
+                    <td class="py-3 px-4 text-red-300">~$95.760 CLP ($7.980/mes)</td>
+                    <td class="py-3 px-4 text-emerald-400 font-bold">$0 CLP (Instalas en tus Smart TV)</td>
+                  </tr>
+                  <tr>
+                    <td class="py-3 px-4 font-semibold text-white">Visitas Técnicas e Instalación</td>
+                    <td class="py-3 px-4 text-red-300">$15.000 a $25.000 CLP</td>
+                    <td class="py-3 px-4 text-emerald-400 font-bold">$0 CLP (Activación digital al tiro)</td>
+                  </tr>
+                  <tr class="bg-emerald-500/5 font-bold text-white">
+                    <td class="py-4 px-4 text-base">Gasto Total Anual del Hogar</td>
+                    <td class="py-4 px-4 text-red-400 text-base">~$794.640 CLP / año</td>
+                    <td class="py-4 px-4 text-emerald-400 text-base font-black">$33.000 CLP / año</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p class="mt-4 text-xs text-amber-300 font-bold text-center">
+              💰 ¡Ahorro familiar real estimado: más de $760.000 pesos chilenos al año contratando el plan de 12 meses!
+            </p>
+          </div>
+
+          <div class="p-8 rounded-3xl bg-[#0D0D14] border border-white/10">
+            <h3 class="text-xl font-bold text-white mb-3">
+              ¿Por Qué las Empresas de Cable No Quieren que Conozcas iptv CHILE?
+            </h3>
+            <p>
+              El modelo de negocio de las empresas de cable tradicionales depende de atrapar a los clientes en contratos de 12 a 24 meses con cláusulas de renovación automática. Te obligan a pagar por cientos de canales de relleno que nadie ve y te cobran recargos cuando deseas sintonizar un partido de fútbol o una película taquillera en alta definición.
+            </p>
+            <p class="mt-3">
+              En <strong>iptv CHILE</strong> creemos en la libertad de elección. Con solo mantener tu servicio de internet de fibra óptica (que hoy en día es accesible y veloz en casi todo Chile), puedes instalar nuestras credenciales en cuestión de minutos y disfrutar de una imagen con menor compresión, sonido superior y atención al cliente humana y cálida por WhatsApp.
+            </p>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Real-Time Official Live Sports Scores (Bottom Section) -->
+    <LiveScores />
+
+    <!-- 9. Contact Component -->
+    <ContactForm 
+      title="¿Listo para Ahorrar? Habla con un Asesor de iptv CHILE"
+      subtitle="Te asesoramos en el proceso de desinstalación de tus antiguos servicios de cable y te dejamos el streaming funcionando en minutos."
+    />
+
+    <!-- 10. FAQ Section -->
+    <FAQSection />
+
+    <!-- 11. Final CTA Section -->
+    <CTASection 
+      title="Corta el Cable Hoy Mismo y Empieza a Ahorrar en Tu Hogar"
+      description="Únete a las miles de familias chilenas que ya disfrutan de televisión 4K por una fracción del costo. Activación inmediata por WhatsApp con garantía de satisfacción de 24 horas."
+      buttonText="Aprovechar Plan Anual con 1 Mes Gratis ($35 USD)"
+    />
+  </main>
+
+  <Footer />
+
+  <!-- Marketing & Retention Widgets -->
+  <FloatingWhatsApp />
+  <SocialPopup />
+  <GroupsPopup />
+  <ExitPopup />
+</Layout>

@@ -1,0 +1,45 @@
+---
+import { Users, Gift, ArrowRight, Sparkles, Share2 } from 'lucide-astro';
+---
+
+<section class="py-10 bg-gradient-to-r from-red-950/40 via-[#0D0D14] to-blue-950/40 border-y border-white/10 relative overflow-hidden">
+  <!-- Subtle glow -->
+  <div class="absolute inset-0 bg-radial from-red-500/5 to-transparent pointer-events-none"></div>
+
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <div class="flex flex-col lg:flex-row items-center justify-between gap-6 p-6 sm:p-8 rounded-3xl bg-white/[0.02] border border-white/10 backdrop-blur-xl">
+      
+      <!-- Left Info -->
+      <div class="flex items-center gap-5 text-left">
+        <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-amber-500 to-red-600 flex items-center justify-center text-white shrink-0 shadow-lg shadow-amber-500/20">
+          <Gift class="w-7 h-7" />
+        </div>
+        <div>
+          <div class="inline-flex items-center gap-1.5 px-3 py-0.5 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-400 text-[11px] font-bold uppercase tracking-wider mb-1">
+            <Sparkles class="w-3 h-3" />
+            <span>Programa de Referidos iptv CHILE</span>
+          </div>
+          <h3 class="text-xl sm:text-2xl font-black text-white tracking-tight">
+            Invita a tus Amigos y Gana Meses Gratis Sin Límite
+          </h3>
+          <p class="text-xs sm:text-sm text-slate-300 mt-1 max-w-2xl">
+            Por cada persona que contrate cualquier plan de iptv CHILE con tu recomendación, tú recibes <strong class="text-white">1 Mes Gratis de servicio 4K</strong> y tu amigo obtiene un <strong class="text-white">10% de descuento inmediato</strong>.
+          </p>
+        </div>
+      </div>
+
+      <!-- Right Action Button -->
+      <div class="shrink-0 w-full lg:w-auto">
+        <a 
+          href="/referral" 
+          class="w-full lg:w-auto px-6 py-3.5 rounded-xl bg-gradient-to-r from-amber-500 via-amber-600 to-red-600 hover:from-amber-400 hover:to-red-500 text-white font-extrabold text-sm shadow-xl shadow-amber-600/25 transition-all duration-200 flex items-center justify-center gap-2 hover:scale-105"
+        >
+          <Share2 class="w-4 h-4" />
+          <span>Generar Mi Enlace de Referido</span>
+          <ArrowRight class="w-4 h-4" />
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>

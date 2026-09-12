@@ -1,0 +1,43 @@
+---
+import { MessageSquare, Sparkles } from 'lucide-astro';
+
+interface Props {
+  whatsappUrl?: string;
+}
+
+const {
+  whatsappUrl = "https://wa.me/18036582620?text=Hola!%20Tengo%20una%20consulta%20sobre%20iptv%20CHILE%20y%20quiero%20activar%20mi%20servicio"
+} = Astro.props;
+---
+
+<!-- Floating WhatsApp Widget -->
+<aside class="fixed bottom-6 right-6 z-50 flex items-center gap-3 group" aria-label="Soporte por WhatsApp">
+  <!-- Interactive Speech Bubble -->
+  <a 
+    href={whatsappUrl}
+    target="_blank"
+    rel="noopener noreferrer"
+    class="hidden sm:flex items-center gap-2.5 px-4 py-2.5 rounded-2xl bg-[#0D0D14]/90 border border-emerald-500/40 text-slate-200 text-xs font-semibold shadow-2xl backdrop-blur-xl hover:border-emerald-400 hover:text-white transition-all duration-200 hover:-translate-x-1"
+  >
+    <span class="flex h-2 w-2 rounded-full bg-emerald-400 animate-ping"></span>
+    <span>¿Dudas? ¡Escríbenos en vivo!</span>
+    <span class="text-[10px] px-2 py-0.5 rounded-md bg-emerald-500/20 text-emerald-300 font-bold">En línea</span>
+  </a>
+
+  <!-- Floating Action Button -->
+  <a 
+    href={whatsappUrl}
+    target="_blank"
+    rel="noopener noreferrer"
+    class="relative w-14 h-14 rounded-full bg-gradient-to-tr from-[#25D366] to-[#128C7E] flex items-center justify-center text-white shadow-2xl shadow-emerald-600/50 hover:scale-110 transition-transform duration-300 border-2 border-white/20 focus:outline-none focus:ring-4 focus:ring-emerald-500/30"
+    aria-label="Abrir chat de WhatsApp con soporte técnico de iptv CHILE"
+  >
+    <!-- Notification badge -->
+    <span class="absolute -top-1 -right-1 flex h-4 w-4">
+      <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
+      <span class="relative inline-flex rounded-full h-4 w-4 bg-red-500 text-[9px] font-black text-white items-center justify-center">1</span>
+    </span>
+
+    <MessageSquare class="w-7 h-7 fill-current" />
+  </a>
+</aside>

@@ -1,0 +1,225 @@
+---
+import { Mail, MessageSquare, Send, Phone, Clock, ShieldCheck, Sparkles, MapPin, ArrowRight } from 'lucide-astro';
+
+interface Props {
+  title?: string;
+  subtitle?: string;
+}
+
+const {
+  title = 'Contáctanos — Soporte y Activación Inmediata',
+  subtitle = '¿Tienes preguntas sobre el servicio, medios de pago en Chile o instalación en tu dispositivo? Escríbenos y te responderemos al tiro.'
+} = Astro.props;
+---
+
+<section id="contacto" class="py-20 bg-[#060609] relative overflow-hidden border-t border-white/5">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    
+    <div class="text-center max-w-3xl mx-auto mb-16">
+      <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-red-600/10 border border-red-500/30 text-red-400 text-xs font-bold uppercase tracking-wider mb-4">
+        <MessageSquare class="w-3.5 h-3.5" />
+        <span>Atención al Cliente 24/7 en Español</span>
+      </div>
+      <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight mb-4">
+        {title}
+      </h2>
+      <p class="text-base sm:text-lg text-slate-300 leading-relaxed">
+        {subtitle}
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+      
+      <!-- Left: Official Contact Channels Grid (4 Channels Required) -->
+      <div class="lg:col-span-5 space-y-4">
+        
+        <!-- 1. WhatsApp Number -->
+        <a 
+          href="https://wa.me/18036582620?text=Hola!%20Deseo%20hacer%20una%20consulta%20sobre%20iptv%20CHILE"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="p-5 rounded-3xl bg-[#0D0D14] border border-emerald-500/30 hover:border-emerald-500/60 transition-all flex items-start gap-4 group"
+        >
+          <div class="w-12 h-12 rounded-2xl bg-[#25D366]/20 border border-[#25D366]/40 flex items-center justify-center text-[#25D366] shrink-0 group-hover:scale-110 transition-transform">
+            <MessageSquare class="w-6 h-6 fill-current" />
+          </div>
+          <div class="flex-1">
+            <span class="text-[11px] uppercase tracking-wider font-bold text-emerald-400 block mb-0.5">Soporte y Ventas WhatsApp</span>
+            <div class="text-white font-bold text-base group-hover:text-emerald-300 transition-colors">+1 (803) 658-2620</div>
+            <p class="text-xs text-slate-400 mt-1">Atención directa en español y activación en menos de 2 minutos.</p>
+          </div>
+        </a>
+
+        <!-- 2. WhatsApp Official Channel -->
+        <a 
+          href="https://whatsapp.com/channel/0029VayVaLpD8SE3bf8wMY3v"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="p-5 rounded-3xl bg-[#0D0D14] border border-white/10 hover:border-emerald-500/40 transition-all flex items-start gap-4 group"
+        >
+          <div class="w-12 h-12 rounded-2xl bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400 shrink-0 group-hover:scale-110 transition-transform">
+            <Sparkles class="w-6 h-6" />
+          </div>
+          <div class="flex-1">
+            <span class="text-[11px] uppercase tracking-wider font-bold text-emerald-400 block mb-0.5">Canal Oficial de WhatsApp</span>
+            <div class="text-white font-bold text-sm group-hover:text-emerald-300 transition-colors">Comunidad iptv CHILE</div>
+            <p class="text-xs text-slate-400 mt-1">Horarios de partidos, novedades y descuentos exclusivos.</p>
+          </div>
+        </a>
+
+        <!-- 3. Telegram Official Channel -->
+        <a 
+          href="https://t.me/castvera_com"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="p-5 rounded-3xl bg-[#0D0D14] border border-sky-500/30 hover:border-sky-500/60 transition-all flex items-start gap-4 group"
+        >
+          <div class="w-12 h-12 rounded-2xl bg-[#0088CC]/20 border border-[#0088CC]/40 flex items-center justify-center text-[#0088CC] shrink-0 group-hover:scale-110 transition-transform">
+            <Send class="w-6 h-6" />
+          </div>
+          <div class="flex-1">
+            <span class="text-[11px] uppercase tracking-wider font-bold text-sky-400 block mb-0.5">Canal de Telegram</span>
+            <div class="text-white font-bold text-sm group-hover:text-sky-300 transition-colors">@castvera_com</div>
+            <p class="text-xs text-slate-400 mt-1">Estado de servidores y anuncios oficiales.</p>
+          </div>
+        </a>
+
+        <!-- 4. Contact Emails (Both required) -->
+        <div class="p-5 rounded-3xl bg-[#0D0D14] border border-white/10 space-y-3 text-xs">
+          <span class="text-[11px] uppercase tracking-wider font-bold text-slate-400 block">Correos Electrónicos Oficiales</span>
+          <div class="flex items-center gap-3">
+            <Mail class="w-4 h-4 text-red-400 shrink-0" />
+            <div>
+              <span class="text-slate-400 block text-[10px]">Consultas Generales:</span>
+              <a href="mailto:contact@chileiptv.live" class="text-white font-semibold hover:text-red-400 transition-colors">
+                contact@chileiptv.live
+              </a>
+            </div>
+          </div>
+          <div class="flex items-center gap-3 pt-2 border-t border-white/5">
+            <Mail class="w-4 h-4 text-blue-400 shrink-0" />
+            <div>
+              <span class="text-slate-400 block text-[10px]">Soporte Técnico Global:</span>
+              <a href="mailto:support@castvera.com" class="text-white font-semibold hover:text-blue-400 transition-colors">
+                support@castvera.com
+              </a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Right: Interactive Fast Message Form -->
+      <div class="lg:col-span-7">
+        <div class="p-8 sm:p-10 rounded-3xl bg-[#0D0D14] border border-white/10 relative overflow-hidden">
+          <h3 class="text-xl font-bold text-white mb-2">Envíanos un Mensaje</h3>
+          <p class="text-xs text-slate-400 mb-6">Completa los campos y te contactaremos por WhatsApp o correo al tiro.</p>
+
+          <form id="direct-contact-form" class="space-y-4">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label for="contact-name" class="block text-xs font-bold text-slate-300 mb-1.5">Nombre Completo *</label>
+                <input 
+                  type="text" 
+                  id="contact-name" 
+                  name="name" 
+                  required 
+                  placeholder="Ej. Rodrigo Morales"
+                  class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white text-xs placeholder-slate-500 focus:outline-none focus:border-red-500 transition-colors"
+                />
+              </div>
+
+              <div>
+                <label for="contact-whatsapp" class="block text-xs font-bold text-slate-300 mb-1.5">Número de WhatsApp *</label>
+                <input 
+                  type="tel" 
+                  id="contact-whatsapp" 
+                  name="whatsapp" 
+                  required 
+                  placeholder="+56 9 1234 5678"
+                  class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white text-xs placeholder-slate-500 focus:outline-none focus:border-red-500 transition-colors"
+                />
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label for="contact-email" class="block text-xs font-bold text-slate-300 mb-1.5">Correo Electrónico *</label>
+                <input 
+                  type="email" 
+                  id="contact-email" 
+                  name="email" 
+                  required 
+                  placeholder="tu@correo.cl"
+                  class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white text-xs placeholder-slate-500 focus:outline-none focus:border-red-500 transition-colors"
+                />
+              </div>
+
+              <div>
+                <label for="contact-device" class="block text-xs font-bold text-slate-300 mb-1.5">Dispositivo Principal *</label>
+                <select 
+                  id="contact-device" 
+                  name="device" 
+                  class="w-full px-4 py-3 rounded-xl bg-[#131320] border border-white/10 text-white text-xs focus:outline-none focus:border-red-500 transition-colors"
+                >
+                  <option value="Smart TV Samsung">Smart TV Samsung</option>
+                  <option value="Smart TV LG">Smart TV LG</option>
+                  <option value="Amazon Firestick">Amazon Fire TV Stick</option>
+                  <option value="Android TV / Xiaomi">Android TV / Xiaomi Box</option>
+                  <option value="Celular / Tablet">Celular / Tablet (Android / iOS)</option>
+                  <option value="Computador">Computador (Windows / Mac)</option>
+                </select>
+              </div>
+            </div>
+
+            <div>
+              <label for="contact-message" class="block text-xs font-bold text-slate-300 mb-1.5">Mensaje o Consulta *</label>
+              <textarea 
+                id="contact-message" 
+                name="message" 
+                rows="4" 
+                required 
+                placeholder="Hola, me gustaría solicitar la prueba gratis de 24 horas o consultar medios de pago..."
+                class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white text-xs placeholder-slate-500 focus:outline-none focus:border-red-500 transition-colors resize-none"
+              ></textarea>
+            </div>
+
+            <button 
+              type="submit" 
+              class="w-full py-4 px-6 rounded-xl bg-gradient-to-r from-red-600 via-red-700 to-red-600 hover:from-red-500 hover:to-red-600 text-white font-extrabold text-sm shadow-xl shadow-red-600/30 transition-all flex items-center justify-center gap-2 hover:scale-[1.01]"
+            >
+              <MessageSquare class="w-4 h-4" />
+              <span>Enviar Consulta a Soporte Técnico</span>
+              <ArrowRight class="w-4 h-4" />
+            </button>
+
+            <div class="flex items-center justify-center gap-2 text-[11px] text-slate-400 pt-2">
+              <ShieldCheck class="w-3.5 h-3.5 text-emerald-400" />
+              <span>Tus datos son 100% confidenciales y protegidos bajo estricta privacidad.</span>
+            </div>
+          </form>
+
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<script>
+  const form = document.getElementById('direct-contact-form') as HTMLFormElement | null;
+  if (form) {
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const name = (document.getElementById('contact-name') as HTMLInputElement)?.value;
+      const phone = (document.getElementById('contact-whatsapp') as HTMLInputElement)?.value;
+      const device = (document.getElementById('contact-device') as HTMLSelectElement)?.value;
+      const msg = (document.getElementById('contact-message') as HTMLTextAreaElement)?.value;
+
+      const text = `Hola equipo de iptv CHILE! Mi nombre es ${name}, mi teléfono es ${phone}, uso ${device}. Consulta: ${msg}`;
+      const url = `https://wa.me/18036582620?text=${encodeURIComponent(text)}`;
+      window.open(url, '_blank');
+    });
+  }
+</script>

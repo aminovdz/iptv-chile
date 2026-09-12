@@ -1,0 +1,156 @@
+---
+import { Gift, X, Sparkles, MessageSquare, ShieldCheck, ArrowRight } from 'lucide-astro';
+---
+
+<div 
+  id="exit-popup" 
+  class="fixed inset-0 z-[100] flex items-center justify-center hidden opacity-0 transition-opacity duration-300"
+  aria-modal="true"
+  role="dialog"
+  aria-labelledby="exit-title"
+>
+  <!-- Backdrop Overlay -->
+  <div class="absolute inset-0 bg-[#040407]/85 backdrop-blur-md" id="exit-overlay"></div>
+  
+  <!-- Modal Dialog Window -->
+  <div 
+    class="relative w-full max-w-lg bg-[#0D0D14] border border-red-500/40 rounded-3xl shadow-2xl p-6 sm:p-8 m-4 transform scale-95 transition-transform duration-300 overflow-hidden text-center z-10"
+    id="exit-modal"
+  >
+    <!-- Glow Orb inside modal -->
+    <div class="absolute -top-20 left-1/2 -translate-x-1/2 w-64 h-64 bg-red-600/20 rounded-full blur-3xl pointer-events-none"></div>
+
+    <!-- Close Button -->
+    <button 
+      id="exit-close" 
+      type="button" 
+      aria-label="Cerrar oferta especial" 
+      class="absolute top-4 right-4 text-slate-400 hover:text-white p-2 rounded-xl bg-white/5 hover:bg-white/10 transition-colors"
+    >
+      <X class="w-5 h-5" />
+    </button>
+    
+    <!-- Gift Icon Badge -->
+    <div class="w-16 h-16 bg-gradient-to-br from-red-600 to-red-800 rounded-2xl flex items-center justify-center mx-auto mb-5 shadow-lg shadow-red-600/40 border border-red-400/30">
+      <Gift class="w-8 h-8 text-white animate-bounce" />
+    </div>
+
+    <!-- Exclusive Offer Header -->
+    <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-red-600/15 border border-red-500/30 text-red-400 text-xs font-bold uppercase tracking-wider mb-3">
+      <Sparkles class="w-3.5 h-3.5 text-yellow-300" />
+      <span>Oferta Exclusiva para Chile</span>
+    </div>
+
+    <!-- Mandatory Offer Headline -->
+    <h3 id="exit-title" class="text-2xl sm:text-3xl font-extrabold text-white mb-3 tracking-tight">
+      Suscríbete ahora y obtén 1 mes gratis
+    </h3>
+
+    <p class="text-slate-300 text-xs sm:text-sm mb-6 leading-relaxed">
+      Antes de que te vayas: contrata cualquier plan hoy mismo y nuestro equipo de soporte agregará <strong class="text-white font-bold">30 días adicionales de servicio 4K</strong> a tu cuenta de forma 100% gratuita.
+    </p>
+
+    <!-- Direct WhatsApp CTA Button -->
+    <div class="space-y-3">
+      <a 
+        href="https://wa.me/18036582620?text=Hola!%20Vi%20la%20oferta:%20Suscríbete%20ahora%20y%20obtén%201%20mes%20gratis.%20Quiero%20activar%20mi%20beneficio%20en%20iptv%20CHILE." 
+        target="_blank" 
+        rel="noopener noreferrer" 
+        id="exit-claim" 
+        class="w-full py-4 px-6 rounded-2xl bg-gradient-to-r from-emerald-600 via-emerald-500 to-emerald-600 hover:from-emerald-500 hover:to-emerald-400 text-white font-extrabold text-base shadow-lg shadow-emerald-600/30 transition-all duration-200 hover:scale-[1.02] flex items-center justify-center gap-2 border border-emerald-400/40"
+      >
+        <MessageSquare class="w-5 h-5 fill-current" />
+        <span>Reclamar 1 Mes Gratis por WhatsApp</span>
+        <ArrowRight class="w-4 h-4" />
+      </a>
+
+      <button 
+        id="exit-decline" 
+        type="button" 
+        class="text-xs text-slate-400 hover:text-slate-200 transition-colors py-2 underline"
+      >
+        No gracias, prefiero pagar la tarifa normal después
+      </button>
+    </div>
+
+    <div class="mt-4 pt-4 border-t border-white/10 flex items-center justify-center gap-2 text-[11px] text-slate-400">
+      <ShieldCheck class="w-3.5 h-3.5 text-emerald-400" />
+      <span>Garantía de satisfacción de 24 horas y soporte directo</span>
+    </div>
+
+  </div>
+</div>
+
+<script>
+  // 24-Hour Frequency Cap Rule using localStorage
+  const STORAGE_KEY = 'iptv_chile_exit_popup_timestamp';
+  const TWENTY_FOUR_HOURS_MS = 24 * 60 * 60 * 1000;
+
+  const popup = document.getElementById('exit-popup');
+  const modal = document.getElementById('exit-modal');
+  const closeBtn = document.getElementById('exit-close');
+  const declineBtn = document.getElementById('exit-decline');
+  const claimBtn = document.getElementById('exit-claim');
+  const overlay = document.getElementById('exit-overlay');
+
+  let hasTriggered = false;
+
+  const shouldShowPopup = () => {
+    const lastShown = localStorage.getItem(STORAGE_KEY);
+    if (!lastShown) return true;
+    const timeDiff = Date.now() - parseInt(lastShown, 10);
+    return timeDiff > TWENTY_FOUR_HOURS_MS;
+  };
+
+  const markPopupShown = () => {
+    localStorage.setItem(STORAGE_KEY, Date.now().toString());
+  };
+
+  const showPopup = () => {
+    if (hasTriggered || !popup || !shouldShowPopup()) return;
+    hasTriggered = true;
+    markPopupShown();
+
+    popup.classList.remove('hidden');
+    requestAnimationFrame(() => {
+      popup.classList.remove('opacity-0');
+      modal?.classList.remove('scale-95');
+    });
+  };
+
+  const hidePopup = () => {
+    if (!popup) return;
+    popup.classList.add('opacity-0');
+    modal?.classList.add('scale-95');
+    setTimeout(() => {
+      popup.classList.add('hidden');
+    }, 300);
+  };
+
+  // Exit intent on desktop (cursor moving out top of viewport)
+  document.addEventListener('mouseleave', (e) => {
+    if (e.clientY <= 5) {
+      showPopup();
+    }
+  });
+
+  // Mobile trigger after 35 seconds of browsing
+  setTimeout(() => {
+    if (window.innerWidth <= 768) {
+      showPopup();
+    }
+  }, 35000);
+
+  // Event Listeners
+  closeBtn?.addEventListener('click', hidePopup);
+  declineBtn?.addEventListener('click', hidePopup);
+  claimBtn?.addEventListener('click', hidePopup);
+  overlay?.addEventListener('click', hidePopup);
+
+  // Fallback ESC key
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && !popup?.classList.contains('hidden')) {
+      hidePopup();
+    }
+  });
+</script>

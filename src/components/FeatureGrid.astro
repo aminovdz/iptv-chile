@@ -1,0 +1,125 @@
+---
+import { Zap, Tv, Globe2, MonitorCheck, ShieldCheck, Headphones, CalendarClock, CreditCard, Flame, Sparkles } from 'lucide-astro';
+
+interface Props {
+  title?: string;
+  subtitle?: string;
+  secondaryKeyword?: string;
+}
+
+const {
+  secondaryKeyword = 'Mejor IPTV Chile',
+  title = `Por Qué Somos Considerados el ${secondaryKeyword}`,
+  subtitle = 'Nuestra plataforma fue diseñada con infraestructura de servidores dedicados en Chile y Latinoamérica, erradicando los cortes de señal y ofreciendo resolución 4K real para todos tus dispositivos.'
+} = Astro.props;
+
+const features = [
+  {
+    icon: Zap,
+    title: 'Infraestructura CDN Anti-Cortes™ 9.2',
+    description: 'Nodos directos de alta capacidad con enrutamiento prioritario para operadores chilenos (VTR, Movistar, Entel, Claro, Mundo). Disfruta de transmisiones sin buffering ni retrasos durante los partidos clave de la Liga Chilena y la Copa Libertadores.',
+    badge: 'Ultra-Baja Latencia'
+  },
+  {
+    icon: Tv,
+    title: 'Todos los Deportes Chilenos en Vivo',
+    description: 'Sigue cada fecha del campeonato nacional sin bloqueos geográficos. Cobertura en vivo de Colo-Colo, Universidad de Chile, Universidad Católica, torneos Conmebol, Champions League y las mejores ligas de fútbol europeo.',
+    badge: 'Fútbol Sin Restricciones'
+  },
+  {
+    icon: Globe2,
+    title: 'Canales Chilenos e Internacionales',
+    description: 'Sintoniza la totalidad de las señales abiertas, regionales y de noticias nacionales de Chile en alta definición, junto con señales prémium de cine, documentales, infantiles y grandes eventos en directo.',
+    badge: 'Programación Completa'
+  },
+  {
+    icon: MonitorCheck,
+    title: 'Calidad 4K Ultra HD & 60 FPS Reales',
+    description: 'Experimenta imágenes nítidas con alto bitrate y compatibilidad de audio estéreo envolvente. Aprecia la velocidad del fútbol y las mejores películas con fluidez sin la compresión borrosa del cable tradicional.',
+    badge: '4K UHD Genuino'
+  },
+  {
+    icon: CalendarClock,
+    title: 'Guía de Programación EPG & TV en Diferido',
+    description: 'Consulta fácilmente la parrilla programática chilena con EPG interactivo y revive partidos, noticias o series emitidas durante los últimos días gracias a nuestra función Catch-Up integrada.',
+    badge: 'EPG Inteligente'
+  },
+  {
+    icon: CreditCard,
+    title: 'Medios de Pago Locales: WebPay y Cuotas',
+    description: 'Paga de forma 100% segura con métodos chilenos: WebPay (Redcompra y tarjetas), Mercado Pago con opción de cuotas sin interés, Flow.cl, Khipu o criptomonedas. Sin cargos automáticos sorpresa.',
+    badge: 'Pago Seguro en CLP'
+  },
+  {
+    icon: ShieldCheck,
+    title: 'Cero Contratos & Garantía de 24 Horas',
+    description: 'Dile adiós a las costosas mensualidades de las compañías de cable tradicionales. Elige la duración de tu plan con total libertad y cuentas con nuestra garantía de satisfacción de 24 horas.',
+    badge: 'Garantía 24h'
+  },
+  {
+    icon: Headphones,
+    title: 'Soporte Técnico Especializado por WhatsApp',
+    description: 'Nuestro equipo de asistencia técnica en español te atiende directamente por WhatsApp y Telegram para configurar tu Smart TV, TV Box o teléfono en menos de 5 minutos.',
+    badge: 'Atención 24/7'
+  }
+];
+---
+
+<section id="caracteristicas" class="py-20 lg:py-28 bg-[#060609] relative overflow-hidden">
+  <!-- Subtle ambient glow -->
+  <div class="absolute top-1/2 left-0 w-96 h-96 bg-red-600/5 rounded-full blur-[140px] pointer-events-none" aria-hidden="true"></div>
+  <div class="absolute bottom-0 right-0 w-96 h-96 bg-blue-600/5 rounded-full blur-[140px] pointer-events-none" aria-hidden="true"></div>
+
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    
+    <!-- Section Header -->
+    <div class="text-center max-w-3xl mx-auto mb-16">
+      <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/5 border border-red-500/30 text-red-400 text-xs font-bold uppercase tracking-wider mb-4">
+        <Sparkles class="w-3.5 h-3.5" />
+        <span>Rendimiento y Estabilidad Superior</span>
+      </div>
+      
+      <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight mb-6">
+        {title}
+      </h2>
+      
+      <p class="text-base sm:text-lg text-slate-300 leading-relaxed">
+        {subtitle}
+      </p>
+    </div>
+
+    <!-- Feature Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      {features.map((feature) => (
+        <div class="group relative rounded-2xl p-6 bg-[#0D0D14]/80 border border-white/10 hover:border-red-500/40 backdrop-blur-xl transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-red-600/10 flex flex-col justify-between">
+          <div>
+            <!-- Badge & Icon -->
+            <div class="flex items-center justify-between mb-5">
+              <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-red-600/20 to-blue-600/20 border border-red-500/30 flex items-center justify-center text-red-400 group-hover:scale-110 group-hover:border-red-500 transition-all duration-200">
+                <feature.icon class="w-6 h-6" />
+              </div>
+              <span class="px-2.5 py-1 rounded-full text-[10px] font-extrabold uppercase tracking-wide bg-white/5 border border-white/10 text-slate-300">
+                {feature.badge}
+              </span>
+            </div>
+
+            <!-- Content -->
+            <h3 class="text-lg font-bold text-white mb-2.5 group-hover:text-red-400 transition-colors">
+              {feature.title}
+            </h3>
+
+            <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+              {feature.description}
+            </p>
+          </div>
+
+          <!-- Bottom Micro Line Accent -->
+          <div class="mt-6 pt-4 border-t border-white/5 flex items-center text-[11px] font-semibold text-slate-400 group-hover:text-red-300 transition-colors">
+            <span>Tecnología Optimizada para Chile</span>
+          </div>
+        </div>
+      ))}
+    </div>
+
+  </div>
+</section>

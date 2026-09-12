@@ -1,0 +1,160 @@
+---
+import { MessageSquare, Send, X, Bell, ShieldCheck, Sparkles, ArrowRight } from 'lucide-astro';
+---
+
+<div 
+  id="groups-popup" 
+  class="fixed inset-0 z-[95] flex items-center justify-center hidden opacity-0 transition-opacity duration-300"
+  aria-modal="true"
+  role="dialog"
+  aria-labelledby="groups-title"
+>
+  <!-- Backdrop -->
+  <div class="absolute inset-0 bg-[#040407]/80 backdrop-blur-md" id="groups-overlay"></div>
+  
+  <!-- Dialog Content -->
+  <div 
+    class="relative w-full max-w-md bg-[#0D0D14] border border-blue-500/30 rounded-3xl shadow-2xl p-6 sm:p-7 m-4 transform scale-95 transition-transform duration-300 text-center z-10"
+    id="groups-modal"
+  >
+    <!-- Close Button -->
+    <button 
+      id="groups-close" 
+      type="button" 
+      aria-label="Cerrar ventana de canales" 
+      class="absolute top-4 right-4 text-slate-400 hover:text-white p-2 rounded-xl bg-white/5 hover:bg-white/10 transition-colors"
+    >
+      <X class="w-5 h-5" />
+    </button>
+
+    <!-- Top Badge -->
+    <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-blue-600 to-indigo-700 flex items-center justify-center mx-auto mb-4 text-white shadow-lg shadow-blue-600/30 border border-blue-400/30">
+      <Bell class="w-7 h-7 animate-pulse" />
+    </div>
+
+    <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/30 text-blue-400 text-xs font-bold uppercase tracking-wider mb-2">
+      <Sparkles class="w-3 h-3 text-yellow-300" />
+      <span>Comunidad Oficial de iptv CHILE</span>
+    </div>
+
+    <h3 id="groups-title" class="text-2xl font-black text-white mb-2 tracking-tight">
+      Únete a Nuestros Canales Oficiales
+    </h3>
+
+    <p class="text-xs sm:text-sm text-slate-300 mb-6 leading-relaxed">
+      Recibe antes que nadie la programación de los partidos de la Liga Chilena, avisos de mantención preventiva, promociones exclusivas y sorteos mensuales de cuentas gratis.
+    </p>
+
+    <!-- Channel Action Buttons -->
+    <div class="space-y-3">
+      <!-- WhatsApp Channel Button -->
+      <a 
+        href="https://whatsapp.com/channel/0029VayVaLpD8SE3bf8wMY3v" 
+        target="_blank" 
+        rel="noopener noreferrer" 
+        class="w-full py-3.5 px-5 rounded-2xl bg-[#25D366]/20 border border-[#25D366]/40 hover:bg-[#25D366]/30 text-emerald-300 font-bold text-sm flex items-center justify-between transition-all hover:scale-[1.01]"
+      >
+        <div class="flex items-center gap-3">
+          <div class="w-8 h-8 rounded-lg bg-[#25D366] text-slate-950 flex items-center justify-center font-bold">
+            <MessageSquare class="w-5 h-5 fill-current" />
+          </div>
+          <span class="text-left">
+            <span class="block text-white font-bold text-sm">Canal de WhatsApp</span>
+            <span class="block text-[11px] text-emerald-400/80">Partidos en vivo & novedades</span>
+          </span>
+        </div>
+        <ArrowRight class="w-4 h-4 text-emerald-400" />
+      </a>
+
+      <!-- Telegram Channel Button -->
+      <a 
+        href="https://t.me/castvera_com" 
+        target="_blank" 
+        rel="noopener noreferrer" 
+        class="w-full py-3.5 px-5 rounded-2xl bg-[#0088CC]/20 border border-[#0088CC]/40 hover:bg-[#0088CC]/30 text-sky-300 font-bold text-sm flex items-center justify-between transition-all hover:scale-[1.01]"
+      >
+        <div class="flex items-center gap-3">
+          <div class="w-8 h-8 rounded-lg bg-[#0088CC] text-white flex items-center justify-center font-bold">
+            <Send class="w-4 h-4" />
+          </div>
+          <span class="text-left">
+            <span class="block text-white font-bold text-sm">Canal de Telegram</span>
+            <span class="block text-[11px] text-sky-400/80">Alertas de servidores & soporte</span>
+          </span>
+        </div>
+        <ArrowRight class="w-4 h-4 text-sky-400" />
+      </a>
+    </div>
+
+    <!-- Dismiss Text -->
+    <button 
+      id="groups-dismiss" 
+      type="button" 
+      class="mt-4 text-xs text-slate-400 hover:text-slate-200 transition-colors py-1.5"
+    >
+      Ver después
+    </button>
+  </div>
+</div>
+
+<script>
+  // 24-Hour Frequency Cap Rule using localStorage
+  const GROUPS_STORAGE_KEY = 'iptv_chile_groups_popup_timestamp';
+  const TWENTY_FOUR_HOURS_MS = 24 * 60 * 60 * 1000;
+
+  const popup = document.getElementById('groups-popup');
+  const modal = document.getElementById('groups-modal');
+  const closeBtn = document.getElementById('groups-close');
+  const dismissBtn = document.getElementById('groups-dismiss');
+  const overlay = document.getElementById('groups-overlay');
+
+  let shown = false;
+
+  const shouldShow = () => {
+    const last = localStorage.getItem(GROUPS_STORAGE_KEY);
+    if (!last) return true;
+    return (Date.now() - parseInt(last, 10)) > TWENTY_FOUR_HOURS_MS;
+  };
+
+  const markShown = () => {
+    localStorage.setItem(GROUPS_STORAGE_KEY, Date.now().toString());
+  };
+
+  const openPopup = () => {
+    if (shown || !popup || !shouldShow()) return;
+    shown = true;
+    markShown();
+
+    popup.classList.remove('hidden');
+    requestAnimationFrame(() => {
+      popup.classList.remove('opacity-0');
+      modal?.classList.remove('scale-95');
+    });
+  };
+
+  const closePopup = () => {
+    if (!popup) return;
+    popup.classList.add('opacity-0');
+    modal?.classList.add('scale-95');
+    setTimeout(() => {
+      popup.classList.add('hidden');
+    }, 300);
+  };
+
+  // Trigger after 40 seconds on site
+  setTimeout(() => {
+    openPopup();
+  }, 40000);
+
+  // Trigger on scroll past 65% of page
+  window.addEventListener('scroll', () => {
+    const scrollPercent = (window.scrollY + window.innerHeight) / document.documentElement.scrollHeight;
+    if (scrollPercent > 0.65) {
+      openPopup();
+    }
+  }, { passive: true });
+
+  closeBtn?.addEventListener('click', closePopup);
+  dismissBtn?.addEventListener('click', closePopup);
+  overlay?.addEventListener('click', closePopup);
+</script>

@@ -1,0 +1,204 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import StickyHeader from '../../components/StickyHeader.astro';
+import PricingCard from '../../components/PricingCard.astro';
+import UserReviewsSection from '../../components/UserReviewsSection.astro';
+import ContactForm from '../../components/ContactForm.astro';
+import FAQSection from '../../components/FAQSection.astro';
+import CTASection from '../../components/CTASection.astro';
+import Footer from '../../components/Footer.astro';
+import FloatingWhatsApp from '../../components/FloatingWhatsApp.astro';
+import ExitPopup from '../../components/ExitPopup.astro';
+import SocialPopup from '../../components/SocialPopup.astro';
+import { ShieldCheck, Check, X, Sparkles, Award, Zap, ArrowRight, Tv } from 'lucide-astro';
+
+export const prerender = true;
+
+export async function getStaticPaths() {
+  const comparisons = [
+    {
+      brand: 'iptv-chile',
+      competitor: 'competitors',
+      slug: 'iptv-chile-vs-competitors',
+      title: 'iptv CHILE vs. Competidores del Mercado 2026 — Comparación Honesta',
+      metaDescription: 'Comparativa transparente entre iptv CHILE y otros servicios del mercado chileno. Descubre por qué destacamos en estabilidad 4K, soporte WhatsApp y precios.',
+      competitorName: 'Servicios Genéricos de IPTV',
+      intro: 'Al buscar un servicio de streaming en Chile, muchos usuarios se encuentran con revendedores improvisados que prometen listas infinitas pero sufren caídas constantes durante los partidos de fútbol. Aquí analizamos objetivamente las diferencias técnicas y de servicio.'
+    },
+    {
+      brand: 'iptv-chile',
+      competitor: 'cable-tradicional',
+      slug: 'iptv-chile-vs-cable-tradicional',
+      title: 'iptv CHILE vs. Cable Tradicional (VTR / Movistar / Claro) — ¿Cuál Conviene?',
+      metaDescription: 'Comparamos iptv CHILE frente a VTR y Movistar. Ahorra hasta $700.000 CLP al año con transmisiones en 4K real, sin arriendos de decodificadores ni contratos.',
+      competitorName: 'Compañías de Cable (VTR / Movistar / Claro)',
+      intro: '¿Vale la pena seguir pagando más de $60.000 mensuales por televisión por cable en Chile? Analizamos el costo, la resolución de imagen y la flexibilidad entre el cable convencional y la tecnología moderna de iptv CHILE.'
+    }
+  ];
+
+  return comparisons.map((comp) => ({
+    params: { brand: comp.brand, competitor: comp.competitor },
+    props: { compData: comp }
+  }));
+}
+
+const { compData } = Astro.props;
+
+const comparisonPoints = [
+  {
+    feature: 'Estabilidad de Servidores en Vivo',
+    iptvChile: 'Nodos CDN dedicados en Santiago con tecnología Anti-Cortes 9.2',
+    competitor: 'Servidores compartidos que colapsan en partidos decisivos',
+    iptvChileWins: true
+  },
+  {
+    feature: 'Calidad de Video Real',
+    iptvChile: '4K Ultra HD nativo a 60 FPS reales sin compresión excesiva',
+    competitor: 'HD o 720p reescalado con pixelación constante',
+    iptvChileWins: true
+  },
+  {
+    feature: 'Deportes y Fútbol Chileno',
+    iptvChile: 'Señales Deportivas Prémium 4K y Fútbol en Directo sin costo extra',
+    competitor: 'Cobros adicionales o enlaces caídos en horas punta',
+    iptvChileWins: true
+  },
+  {
+    feature: 'Transparencia Publicitaria',
+    iptvChile: 'Cumplimiento estricto: sin reclamos engañosos de 50.000 canales',
+    competitor: 'Promesas falsas de decenas de miles de canales de relleno caídos',
+    iptvChileWins: true
+  },
+  {
+    feature: 'Atención al Cliente',
+    iptvChile: 'Soporte humano por WhatsApp 24/7 con respuesta en minutos',
+    competitor: 'Soporte ausente o respuestas automatizadas por ticket lento',
+    iptvChileWins: true
+  },
+  {
+    feature: 'Medios de Pago Chilenos',
+    iptvChile: 'WebPay Plus (Redcompra), Mercado Pago en cuotas, Flow.cl y Khipu',
+    competitor: 'Solo métodos internacionales o transferencias dudosas',
+    iptvChileWins: true
+  },
+  {
+    feature: 'Aplicación Premium Incluida',
+    iptvChile: 'Licencia de App Premium GRATIS con el Plan Anual de 12 meses',
+    competitor: 'Sin app propia; compras obligatorias en tiendas de apps',
+    iptvChileWins: true
+  },
+  {
+    feature: 'Garantía de Satisfacción',
+    iptvChile: 'Garantía formal estricta de 24 horas y prueba gratis de 24h',
+    competitor: 'Sin garantía ni posibilidad de devolución',
+    iptvChileWins: true
+  }
+];
+---
+
+<Layout 
+  title={compData.title}
+  description={compData.metaDescription}
+  canonicalUrl={`/compare/${compData.slug}`}
+>
+  <StickyHeader />
+
+  <main class="py-16 sm:py-24 bg-[#060609] relative overflow-hidden">
+    <!-- Ambient Glow -->
+    <div class="absolute top-1/4 left-1/2 -translate-x-1/2 w-[700px] h-[350px] bg-red-600/10 rounded-full blur-[140px] pointer-events-none"></div>
+
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      
+      <!-- Top Title -->
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-red-600/10 border border-red-500/30 text-red-400 text-xs font-bold uppercase tracking-wider mb-4">
+          <Award class="w-3.5 h-3.5" />
+          <span>Análisis Comparativo E-E-A-T 2026</span>
+        </div>
+        <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight mb-4">
+          {compData.title}
+        </h1>
+        <p class="text-base sm:text-lg text-slate-300 leading-relaxed">
+          {compData.intro}
+        </p>
+      </div>
+
+      <!-- Comparison Matrix Table -->
+      <div class="p-6 sm:p-8 rounded-3xl bg-[#0D0D14] border border-white/10 shadow-2xl mb-16 overflow-hidden">
+        <div class="overflow-x-auto">
+          <table class="w-full text-left border-collapse text-xs sm:text-sm">
+            <thead>
+              <tr class="border-b border-white/10">
+                <th class="py-4 px-4 text-white font-bold">Característica Técnica</th>
+                <th class="py-4 px-4 bg-red-600/10 border-x border-red-500/30 text-red-400 font-extrabold rounded-t-xl text-base">
+                  iptv CHILE (Recomendado)
+                </th>
+                <th class="py-4 px-4 text-slate-400 font-bold">
+                  {compData.competitorName}
+                </th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-white/5 text-slate-300">
+              {comparisonPoints.map((row) => (
+                <tr class="hover:bg-white/[0.02] transition-colors">
+                  <td class="py-4 px-4 font-semibold text-white">
+                    {row.feature}
+                  </td>
+                  <td class="py-4 px-4 bg-red-600/5 border-x border-red-500/20 text-white font-medium">
+                    <div class="flex items-start gap-2">
+                      <Check class="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
+                      <span>{row.iptvChile}</span>
+                    </div>
+                  </td>
+                  <td class="py-4 px-4 text-slate-400">
+                    <div class="flex items-start gap-2">
+                      <X class="w-4 h-4 text-red-400 shrink-0 mt-0.5" />
+                      <span>{row.competitor}</span>
+                    </div>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+
+        <div class="mt-8 p-4 rounded-2xl bg-white/[0.02] border border-white/5 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs">
+          <div class="text-slate-300">
+            <strong class="text-white">Conclusión del Análisis:</strong> iptv CHILE ofrece una infraestructura técnica más confiable, soporte por WhatsApp y precios justos sin contratos forzosos.
+          </div>
+          <a 
+            href="#precios"
+            class="px-5 py-2.5 rounded-xl bg-red-600 hover:bg-red-500 text-white font-bold text-xs shrink-0 transition-colors"
+          >
+            Ver Planes de iptv CHILE
+          </a>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Pricing Cards for Fast Conversion -->
+    <PricingCard 
+      title="Elige el Ganador: Suscríbete a iptv CHILE"
+      subtitle="Obtén la mejor calidad 4K desde solo $5 USD al mes con garantía de satisfacción."
+    />
+
+    <!-- Reviews -->
+    <UserReviewsSection />
+
+    <!-- FAQ -->
+    <FAQSection />
+
+    <!-- Contact -->
+    <ContactForm />
+
+    <!-- Final CTA -->
+    <CTASection />
+  </main>
+
+  <Footer />
+
+  <FloatingWhatsApp />
+  <SocialPopup />
+  <ExitPopup />
+</Layout>

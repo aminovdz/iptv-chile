@@ -1,0 +1,74 @@
+---
+import Layout from '../layouts/Layout.astro';
+import StickyHeader from '../components/StickyHeader.astro';
+import Footer from '../components/Footer.astro';
+import FloatingWhatsApp from '../components/FloatingWhatsApp.astro';
+import { ShieldCheck, FileWarning, Mail } from 'lucide-astro';
+---
+
+<Layout 
+  title="Política DMCA y Propiedad Intelectual | iptv CHILE"
+  description="Conoce el procedimiento de notificación y retirada conforme a la DMCA y leyes internacionales de derechos de autor en iptv CHILE."
+>
+  <StickyHeader />
+
+  <main class="py-16 sm:py-24 bg-[#060609] relative overflow-hidden">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      
+      <div class="text-center mb-16">
+        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-red-600/10 border border-red-500/30 text-red-400 text-xs font-bold uppercase tracking-wider mb-4">
+          <FileWarning class="w-3.5 h-3.5" />
+          <span>Cumplimiento Legal & Derechos de Autor</span>
+        </div>
+        <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight mb-4">
+          Aviso de Derechos de Autor y Procedimiento DMCA
+        </h1>
+        <p class="text-xs sm:text-sm text-slate-400">
+          En cumplimiento con la Digital Millennium Copyright Act (DMCA) y tratados internacionales de propiedad intelectual.
+        </p>
+      </div>
+
+      <div class="prose prose-invert max-w-none space-y-8 text-slate-300 text-sm leading-relaxed">
+        
+        <div class="p-6 rounded-2xl bg-[#0D0D14] border border-white/10">
+          <h2 class="text-lg font-bold text-white mb-2">1. Declaración de Cumplimiento</h2>
+          <p>
+            <strong>iptv CHILE</strong> (chileiptv.live) respeta plenamente los derechos de propiedad intelectual de creadores, productoras y titulares de contenido. Actuamos como un intermediario técnico que provee infraestructura de software para la transmisión multimedia y respondemos de manera expedita a avisos legítimos de presunta infracción de derechos de autor.
+          </p>
+        </div>
+
+        <div class="p-6 rounded-2xl bg-[#0D0D14] border border-white/10">
+          <h2 class="text-lg font-bold text-white mb-2">2. Procedimiento de Notificación de Infracción</h2>
+          <p class="mb-3">
+            Si usted es titular de derechos de autor o actúa como apoderado legal autorizado y considera que algún enlace o contenido transmitido a través de nuestra red vulnera sus derechos, le solicitamos enviar una notificación formal con los siguientes datos:
+          </p>
+          <ul class="list-disc pl-5 space-y-2 text-slate-300">
+            <li>Identificación precisa de la obra protegida por derechos de autor que se alega infringida.</li>
+            <li>Descripción exacta y enlace URL o dirección de flujo del material infractor.</li>
+            <li>Información de contacto del reclamante: nombre legal, dirección física, número telefónico y correo electrónico.</li>
+            <li>Declaración de buena fe donde conste que el uso reclamado no está autorizado por el propietario, su agente o la ley.</li>
+            <li>Declaración bajo pena de perjurio de que la información contenida en la notificación es exacta y verídica.</li>
+            <li>Firma física o electrónica del titular del derecho o de su representante facultado.</li>
+          </ul>
+        </div>
+
+        <div class="p-6 rounded-2xl bg-[#0D0D14] border border-white/10">
+          <h2 class="text-lg font-bold text-white mb-2">3. Canal de Notificaciones</h2>
+          <p>
+            Las notificaciones deben ser remitidas a nuestros buzones de correo designados para asuntos legales y de propiedad intelectual:
+          </p>
+          <div class="mt-4 p-4 rounded-xl bg-white/[0.02] border border-white/5 space-y-1 text-xs">
+            <p>• Correo Oficial DMCA: <a href="mailto:contact@chileiptv.live" class="text-red-400 font-semibold">contact@chileiptv.live</a></p>
+            <p>• Soporte de Cumplimiento: <a href="mailto:support@castvera.com" class="text-blue-400 font-semibold">support@castvera.com</a></p>
+            <p class="text-slate-400 text-[11px] mt-2">Tiempo de respuesta habitual ante avisos válidos: 24 a 48 horas hábiles.</p>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </main>
+
+  <Footer />
+  <FloatingWhatsApp />
+</Layout>

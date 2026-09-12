@@ -1,0 +1,202 @@
+---
+import Layout from '../layouts/Layout.astro';
+import StickyHeader from '../components/StickyHeader.astro';
+import PricingCard from '../components/PricingCard.astro';
+import UserReviewsSection from '../components/UserReviewsSection.astro';
+import ContactForm from '../components/ContactForm.astro';
+import FAQSection from '../components/FAQSection.astro';
+import CTASection from '../components/CTASection.astro';
+import Footer from '../components/Footer.astro';
+import FloatingWhatsApp from '../components/FloatingWhatsApp.astro';
+import ExitPopup from '../components/ExitPopup.astro';
+import SocialPopup from '../components/SocialPopup.astro';
+import { Award, Check, X, ShieldCheck, Sparkles, Star, Zap, HelpCircle } from 'lucide-astro';
+
+const pageTitle = "Ultra IPTV Chile Review 2026 — ¿Vale la Pena? Precios, Canales y Alternativas";
+const pageDescription = "Análisis completo de Ultra IPTV en Chile. Descubre opiniones, precios, estabilidad de canales y por qué iptv CHILE es la alternativa #1 sin cortes.";
+---
+
+<Layout 
+  title={pageTitle}
+  description={pageDescription}
+  canonicalUrl="/ultra-iptv"
+>
+  <StickyHeader />
+
+  <main class="py-16 sm:py-24 bg-[#060609] relative overflow-hidden">
+    <!-- Ambient Glow -->
+    <div class="absolute top-1/4 left-1/2 -translate-x-1/2 w-[700px] h-[350px] bg-purple-600/10 rounded-full blur-[140px] pointer-events-none"></div>
+
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      
+      <!-- Top Title -->
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-purple-600/15 border border-purple-500/30 text-purple-300 text-xs font-bold uppercase tracking-wider mb-4">
+          <Award class="w-3.5 h-3.5" />
+          <span>Análisis y Evaluación Imparcial 2026</span>
+        </div>
+        <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight mb-4">
+          Ultra IPTV Chile Review: ¿Vale la Pena Contratar en 2026?
+        </h1>
+        <p class="text-base sm:text-lg text-slate-300 leading-relaxed">
+          Probamos y analizamos el servicio de Ultra IPTV en Chile: revisamos su calidad de servidores, canales deportivos de fútbol chileno, opciones de pago y la mejor alternativa del mercado.
+        </p>
+      </div>
+
+      <!-- Quick Verdict Box -->
+      <div class="p-8 rounded-3xl bg-gradient-to-br from-[#121020] to-[#0A0D18] border border-purple-500/30 mb-16 shadow-2xl">
+        <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+          <div>
+            <span class="text-xs uppercase font-bold text-purple-400 tracking-wider">Veredicto del Equipo Técnico</span>
+            <h2 class="text-2xl font-black text-white mt-1 mb-2">Puntuación: 7.8 / 10 vs. iptv CHILE (9.8 / 10)</h2>
+            <p class="text-xs sm:text-sm text-slate-300 leading-relaxed max-w-2xl">
+              Si bien Ultra IPTV es un término altamente buscado en Chile, muchos usuarios experimentan buffering recurrente en partidos de alta demanda de la Liga Chilena y falta de medios de pago locales en cuotas. <strong>iptv CHILE</strong> se consolida como la alternativa más recomendada por estabilidad, servidores CDN en Santiago y soporte por WhatsApp.
+            </p>
+          </div>
+          <a 
+            href="#precios"
+            class="px-6 py-3.5 rounded-xl bg-gradient-to-r from-red-600 to-red-700 hover:from-red-500 hover:to-red-600 text-white font-extrabold text-xs uppercase tracking-wider shadow-lg shadow-red-600/30 shrink-0"
+          >
+            Probar Alternativa #1 Gratis
+          </a>
+        </div>
+      </div>
+
+      <!-- Visual Comparison Lab Test -->
+      <div class="mb-16 rounded-3xl overflow-hidden border border-purple-500/20 shadow-2xl shadow-purple-500/10 bg-[#0d0f18] group">
+        <img 
+          src="/images/ultra-iptv-comparison.webp" 
+          alt="Comparativa de velocidad y estabilidad entre Ultra IPTV y la tecnología Anti-Cortes de IPTV Chile en televisor Smart TV 4K OLED" 
+          width="1200"
+          height="675"
+          loading="lazy"
+          decoding="async"
+          class="w-full h-auto aspect-video object-cover group-hover:scale-[1.01] transition-transform duration-700"
+        />
+        <div class="p-4 sm:p-6 bg-[#090b14] border-t border-white/10 text-xs sm:text-sm text-slate-300 flex items-center justify-between">
+          <p><strong class="text-white">Prueba de laboratorio:</strong> Medición de latencia y bitrate en redes residenciales de fibra óptica en Santiago.</p>
+          <span class="text-purple-400 font-bold hidden sm:inline">34ms vs 180ms</span>
+        </div>
+      </div>
+
+      <!-- Pros & Cons Comparison -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16">
+        <div class="p-6 rounded-3xl bg-[#0D0D14] border border-white/10">
+          <h3 class="text-base font-bold text-emerald-400 mb-4 flex items-center gap-2">
+            <Check class="w-5 h-5" />
+            Lo Favorable de Ultra IPTV
+          </h3>
+          <ul class="space-y-2.5 text-xs sm:text-sm text-slate-300">
+            <li class="flex items-start gap-2">
+              <span class="text-emerald-400">✔</span>
+              <span>Reconocimiento de marca y presencia en foros chilenos.</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-emerald-400">✔</span>
+              <span>Variedad de canales de entretenimiento internacional.</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-emerald-400">✔</span>
+              <span>Compatibilidad con reproductores comunes (IPTV Smarters).</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="p-6 rounded-3xl bg-[#0D0D14] border border-white/10">
+          <h3 class="text-base font-bold text-red-400 mb-4 flex items-center gap-2">
+            <X class="w-5 h-5" />
+            Puntos Débiles & Quejas Frecuentes
+          </h3>
+          <ul class="space-y-2.5 text-xs sm:text-sm text-slate-300">
+            <li class="flex items-start gap-2">
+              <span class="text-red-400">✖</span>
+              <span>Congelamientos de señal durante clásicos y partidos de alta sintonía.</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-red-400">✖</span>
+              <span>Publicidad engañosa prometiendo 50.000 canales con enlaces rotos.</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-red-400">✖</span>
+              <span>Dificultad para obtener soporte rápido fuera de horario comercial.</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Comparison Matrix -->
+      <div class="p-6 sm:p-8 rounded-3xl bg-[#0D0D14] border border-white/10 mb-16">
+        <h3 class="text-xl font-bold text-white mb-6 text-center">
+          Tabla Comparativa: Ultra IPTV vs. iptv CHILE
+        </h3>
+        <div class="overflow-x-auto">
+          <table class="w-full text-left text-xs sm:text-sm border-collapse">
+            <thead>
+              <tr class="border-b border-white/10 text-white font-bold">
+                <th class="py-3 px-4">Parámetro</th>
+                <th class="py-3 px-4 text-purple-400">Ultra IPTV</th>
+                <th class="py-3 px-4 text-red-400 font-extrabold bg-red-600/10">iptv CHILE (Ganador)</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-white/5 text-slate-300">
+              <tr>
+                <td class="py-3 px-4 font-semibold text-white">Servidores CDN Locales</td>
+                <td class="py-3 px-4 text-slate-400">Servidores extranjeros genéricos</td>
+                <td class="py-3 px-4 bg-red-600/5 text-emerald-400 font-bold">Nodos dedicados en Santiago</td>
+              </tr>
+              <tr>
+                <td class="py-3 px-4 font-semibold text-white">Fútbol Chileno en Vivo</td>
+                <td class="py-3 px-4">Frecuente buffering en horas punta</td>
+                <td class="py-3 px-4 bg-red-600/5 text-emerald-400 font-bold">60 FPS estables con Anti-Cortes 9.2</td>
+              </tr>
+              <tr>
+                <td class="py-3 px-4 font-semibold text-white">Soporte WhatsApp</td>
+                <td class="py-3 px-4">Respuestas lentas o no disponibles</td>
+                <td class="py-3 px-4 bg-red-600/5 text-emerald-400 font-bold">Atención humana 24/7 en minutos</td>
+              </tr>
+              <tr>
+                <td class="py-3 px-4 font-semibold text-white">Pago Seguro en Chile</td>
+                <td class="py-3 px-4">Opciones limitadas</td>
+                <td class="py-3 px-4 bg-red-600/5 text-emerald-400 font-bold">WebPay, Mercado Pago en cuotas, Flow</td>
+              </tr>
+              <tr>
+                <td class="py-3 px-4 font-semibold text-white">Precio Anual</td>
+                <td class="py-3 px-4">Tarifas elevadas</td>
+                <td class="py-3 px-4 bg-red-600/5 text-emerald-400 font-bold">Solo $35 USD ($33.000 CLP / año)</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Pricing Section -->
+    <PricingCard 
+      title="Prueba la Alternativa #1 a Ultra IPTV en Chile"
+      subtitle="Obtén mayor estabilidad en fútbol y canales chilenos desde solo $5 USD al mes."
+    />
+
+    <!-- Reviews -->
+    <UserReviewsSection />
+
+    <!-- FAQ -->
+    <FAQSection />
+
+    <!-- Contact -->
+    <ContactForm />
+
+    <!-- CTA -->
+    <CTASection 
+      title="No Te Arriesgues con Servidores Inestables: Elige iptv CHILE"
+      description="Garantía de devolución de 24 horas y soporte prioritario por WhatsApp."
+      buttonText="Activar Mi Suscripción Anual ($35 USD)"
+    />
+  </main>
+
+  <Footer />
+
+  <FloatingWhatsApp />
+  <SocialPopup />
+  <ExitPopup />
+</Layout>

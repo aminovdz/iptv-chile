@@ -1,0 +1,351 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import StickyHeader from '../../components/StickyHeader.astro';
+import Hero from '../../components/Hero.astro';
+import LiveScores from '../../components/LiveScores.astro';
+import FeatureGrid from '../../components/FeatureGrid.astro';
+import PricingCard from '../../components/PricingCard.astro';
+import ReferralBanner from '../../components/ReferralBanner.astro';
+import UserReviewsSection from '../../components/UserReviewsSection.astro';
+import ProcessSteps from '../../components/ProcessSteps.astro';
+import SupportedDevices from '../../components/SupportedDevices.astro';
+import CitiesList from '../../components/CitiesList.astro';
+import ContactForm from '../../components/ContactForm.astro';
+import FAQSection from '../../components/FAQSection.astro';
+import CTASection from '../../components/CTASection.astro';
+import Footer from '../../components/Footer.astro';
+
+// Marketing Popups
+import ExitPopup from '../../components/ExitPopup.astro';
+import GroupsPopup from '../../components/GroupsPopup.astro';
+import FloatingWhatsApp from '../../components/FloatingWhatsApp.astro';
+import SocialPopup from '../../components/SocialPopup.astro';
+import { MapPin, Wifi, Server, ShieldCheck, Zap, Tv, CheckCircle2, ArrowRight } from 'lucide-astro';
+
+export const prerender = true;
+
+export async function getStaticPaths() {
+  const cities = [
+    {
+      slug: 'santiago',
+      name: 'Santiago',
+      region: 'Región Metropolitana',
+      ping: '< 10ms',
+      node: 'Santiago Centro Edge Datacenter',
+      population: '7.1M+ (Gran Santiago)',
+      headline: 'Mejor IPTV Chile en Santiago — 4K en Vivo, Deportes & Señales Nacionales',
+      title: 'Mejor IPTV Santiago Chile 2026 — Transmisión 4K sin Cortes en la RM',
+      metaDescription: 'Descubre el mejor servicio de chile iptv en Santiago. Mira Colo-Colo, la U, fútbol en vivo y canales nacionales en 4K sin cortes con servidores locales en la RM.',
+      teams: 'Colo-Colo, Universidad de Chile, Unión Española, Palestino, Audax Italiano, Magallanes',
+      isps: ['VTR Fibra', 'Movistar Fibra', 'Entel Fibra', 'Mundo Pacífico', 'Claro Chile'],
+      intro: 'En el Gran Santiago, comunas como Maipú, Puente Alto, Las Condes, Santiago Centro, La Florida y Providencia concentran la mayor demanda de streaming. Los suscriptores con cable tradicional sufren continuas alzas de tarifas que superan los $60.000 CLP mensuales. Con nuestro nodo CDN dedicado en Santiago Centro, garantizamos transmisiones en 4K real con menos de 10ms de latencia para ver el fútbol chileno sin lag.'
+    },
+    {
+      slug: 'valparaiso',
+      name: 'Valparaíso',
+      region: 'Región de Valparaíso',
+      ping: '< 14ms',
+      node: 'Valparaíso Puerto CDN Hub',
+      population: '980K+ (Gran Valparaíso)',
+      headline: 'Mejor IPTV Chile en Valparaíso — Señal 4K Estable para el Puerto',
+      title: 'IPTV Valparaíso Chile 2026 — Señales en Vivo, Deportes & 4K UHD',
+      metaDescription: 'Accede a iptv chile en Valparaíso y Playa Ancha. Disfruta del fútbol chileno, canales nacionales e internacionales en 4K sin pagar de más por cable.',
+      teams: 'Santiago Wanderers, Everton, Unión La Calera, San Luis de Quillota',
+      isps: ['VTR', 'Movistar Fibra', 'Mundo Pacífico', 'Claro', 'Entel'],
+      intro: 'Para los hinchas porteños y familias de Valparaíso, la estabilidad en días de partido es clave. Nuestro nodo de distribución costero ofrece conexión directa para clientes de fibra en los cerros y plan de Valparaíso, eliminando las molestas caídas de señal y entregando calidad Full HD y 4K con 60 FPS.'
+    },
+    {
+      slug: 'concepcion',
+      name: 'Concepción',
+      region: 'Región del Biobío',
+      ping: '< 16ms',
+      node: 'Concepción Biobío Fiber Node',
+      population: '1.0M+ (Gran Concepción)',
+      headline: 'Mejor IPTV Chile en Concepción — Transmisión 4K en Todo el Biobío',
+      title: 'IPTV Concepción Chile 2026 — Fútbol en Vivo, Deportes & Canales HD',
+      metaDescription: 'Disfruta de chile iptv en Concepción, Talcahuano y San Pedro de la Paz. Streaming 4K ultraestable con soporte inmediato por WhatsApp.',
+      teams: 'Huachipato, Deportes Concepción, Fernández Vial, Universidad de Concepción',
+      isps: ['Mundo Pacífico Fibra', 'Movistar Fibra', 'VTR Biobío', 'Claro', 'Entel'],
+      intro: 'El Gran Concepción es una de las urbes más dinámicas del sur de Chile. Con alta penetración de fibra óptica a través de Mundo y Movistar, nuestra red CDN en Concepción permite a miles de penquistas cortar el cable convencional y disfrutar de transmisiones deportivas y entretenimiento con la máxima fluidez.'
+    },
+    {
+      slug: 'vina-del-mar',
+      name: 'Viña del Mar',
+      region: 'Región de Valparaíso',
+      ping: '< 12ms',
+      node: 'Viña del Mar Costa CDN Hub',
+      population: '360K+ (Ciudad Jardín)',
+      headline: 'Mejor IPTV Chile en Viña del Mar — Streaming 4K para la Ciudad Jardín',
+      title: 'IPTV Viña del Mar Chile 2026 — Canales en Vivo 4K y Deportes sin Cortes',
+      metaDescription: 'El servicio #1 de iptv chile en Viña del Mar, Reñaca y Concón. Mira fútbol en vivo y canales nacionales en Smart TV y Firestick.',
+      teams: 'Everton de Viña del Mar, Santiago Wanderers',
+      isps: ['VTR Fibra', 'Movistar Fibra', 'Entel', 'Claro', 'Mundo Pacífico'],
+      intro: 'En Viña del Mar, Reñaca, Concón y Miraflores, las familias buscan una alternativa tecnológica superior para sus televisores 4K. iptv CHILE ofrece una parrilla completa sin costos ocultos de arriendo de decodificadores ni contratos de permanencia.'
+    },
+    {
+      slug: 'antofagasta',
+      name: 'Antofagasta',
+      region: 'Región de Antofagasta',
+      ping: '< 20ms',
+      node: 'Antofagasta Norte Grande Server Node',
+      population: '430K+ (Perla del Norte)',
+      headline: 'Mejor IPTV Chile en Antofagasta — Streaming 4K en el Norte Grande',
+      title: 'IPTV Antofagasta Chile 2026 — Deportes en Vivo, Fútbol & Canales 4K',
+      metaDescription: 'Sintoniza chile iptv en Antofagasta y Calama. Conexión de alta fidelidad para campamentos y hogares mineros sin pagar tarifas excesivas de cable.',
+      teams: 'Deportes Antofagasta, Cobreloa (Calama)',
+      isps: ['Entel Fibra', 'Movistar Fibra', 'VTR', 'Claro', 'Mundo'],
+      intro: 'En la capital minera de Chile, los trabajadores y familias necesitan entretenimiento confiable a cualquier hora del día. Nuestro nodo en Antofagasta optimiza las rutas de datos para evitar la latencia que suele afectar a las conexiones del norte del país.'
+    },
+    {
+      slug: 'temuco',
+      name: 'Temuco',
+      region: 'Región de La Araucanía',
+      ping: '< 18ms',
+      node: 'Temuco Araucanía CDN Cluster',
+      population: '320K+ (Temuco & Padre Las Casas)',
+      headline: 'Mejor IPTV Chile en Temuco — Canales Nacionales y Fútbol en 4K',
+      title: 'IPTV Temuco Chile 2026 — Transmisión Estable sin Freeze en La Araucanía',
+      metaDescription: 'La mejor experiencia de iptv chile en Temuco y Padre Las Casas. Toda la Liga Chilena y señales abiertas en 4K UHD con activación al tiro por WhatsApp.',
+      teams: 'Deportes Temuco, Malleco Unido',
+      isps: ['Mundo Pacífico', 'Movistar Fibra', 'VTR', 'Entel'],
+      intro: 'En la Región de La Araucanía, el aumento de la fibra óptica residencial ha permitido que los hogares de Temuco y Padre Las Casas sustituyan los costosos planes de TV paga por una suscripción flexible, económica y con mayor variedad de señales en alta definición.'
+    },
+    {
+      slug: 'la-serena',
+      name: 'La Serena',
+      region: 'Región de Coquimbo',
+      ping: '< 15ms',
+      node: 'La Serena & Coquimbo Regional Node',
+      population: '500K+ (Conurbación La Serena - Coquimbo)',
+      headline: 'Mejor IPTV Chile en La Serena y Coquimbo — Señales 4K sin Interrupciones',
+      title: 'IPTV La Serena Chile 2026 — Transmisiones Deportivas y Canales en Vivo',
+      metaDescription: 'Contrata chile iptv en La Serena y Coquimbo. Fútbol chileno sin cortes, canales de noticias y series en 4K con activación en 2 minutos.',
+      teams: 'Club Deportes La Serena, Coquimbo Unido',
+      isps: ['Movistar Fibra', 'VTR', 'Mundo Pacífico', 'Claro', 'Entel'],
+      intro: 'La conurbación La Serena - Coquimbo vive intensamente el clásico regional y los torneos del fútbol chileno. Nuestra red CDN proporciona un caudal constante sin fluctuaciones de bitrate, ideal para televisores de gran tamaño y dispositivos móviles.'
+    },
+    {
+      slug: 'puerto-montt',
+      name: 'Puerto Montt',
+      region: 'Región de Los Lagos',
+      ping: '< 22ms',
+      node: 'Puerto Montt Austral Edge CDN',
+      population: '270K+ (Los Lagos)',
+      headline: 'Mejor IPTV Chile en Puerto Montt — Streaming 4K para el Sur Austral',
+      title: 'IPTV Puerto Montt Chile 2026 — Cobertura Total en el Sur Austral en 4K',
+      metaDescription: 'Disfruta de iptv chile en Puerto Montt y Puerto Varas. Canales nacionales y deportes en directo con la mayor estabilidad del mercado.',
+      teams: 'Deportes Puerto Montt, Provincial Osorno',
+      isps: ['Telsur / Gtd', 'Movistar Fibra', 'Mundo Pacífico', 'Entel'],
+      intro: 'En la puerta de entrada a la Patagonia chilena, los usuarios conectados a redes como Telsur y Movistar disfrutan de una experiencia cinematográfica en 4K. Con servidores optimizados para la zona sur austral, ver la televisión nunca había sido tan accesible y nítido.'
+    }
+  ];
+
+  return cities.map((c) => ({
+    params: { city: c.slug },
+    props: { cityData: c }
+  }));
+}
+
+const { cityData } = Astro.props;
+
+// LocalBusiness Schema for Programmatic Geo-SEO
+const localBusinessSchema = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "@id": `https://chileiptv.live/locations/${cityData.slug}#localbusiness`,
+  "name": `iptv CHILE — ${cityData.name}`,
+  "url": `https://chileiptv.live/locations/${cityData.slug}`,
+  "telephone": "+18036582620",
+  "priceRange": "$5 - $35 USD",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": cityData.name,
+    "addressRegion": cityData.region,
+    "addressCountry": "CL"
+  },
+  "areaServed": {
+    "@type": "AdministrativeArea",
+    "name": cityData.name
+  },
+  "description": cityData.metaDescription
+};
+---
+
+<Layout 
+  title={cityData.title}
+  description={cityData.metaDescription}
+  canonicalUrl={`/locations/${cityData.slug}`}
+  pageSchema={localBusinessSchema}
+>
+  <StickyHeader />
+
+  <main>
+    <!-- 1. Hero Section (Dynamically Injected with City Name) -->
+    <Hero 
+      city={cityData.name}
+      badge={`🇨🇱 Nodo CDN Local Activo en ${cityData.name} (Latencia: ${cityData.ping})`}
+      headline={cityData.headline}
+      subheadline={cityData.intro}
+    />
+
+    <!-- Local Server Node Telemetry Box -->
+    <section class="py-8 bg-[#0D0D14] border-y border-white/5">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 text-center">
+          <div class="p-4 rounded-2xl bg-white/[0.02] border border-white/5">
+            <span class="text-[10px] uppercase font-bold text-slate-400 block mb-1">Nodo de Distribución</span>
+            <span class="text-xs sm:text-sm font-bold text-white flex items-center justify-center gap-1.5">
+              <Server class="w-3.5 h-3.5 text-red-400" />
+              <span class="truncate">{cityData.node}</span>
+            </span>
+          </div>
+
+          <div class="p-4 rounded-2xl bg-white/[0.02] border border-white/5">
+            <span class="text-[10px] uppercase font-bold text-slate-400 block mb-1">Latencia Media Local</span>
+            <span class="text-xs sm:text-sm font-mono font-bold text-emerald-400 flex items-center justify-center gap-1.5">
+              <Wifi class="w-3.5 h-3.5" />
+              <span>{cityData.ping}</span>
+            </span>
+          </div>
+
+          <div class="p-4 rounded-2xl bg-white/[0.02] border border-white/5">
+            <span class="text-[10px] uppercase font-bold text-slate-400 block mb-1">Población Coberta</span>
+            <span class="text-xs sm:text-sm font-bold text-white">
+              {cityData.population}
+            </span>
+          </div>
+
+          <div class="p-4 rounded-2xl bg-white/[0.02] border border-white/5">
+            <span class="text-[10px] uppercase font-bold text-slate-400 block mb-1">Compatibilidad Fibra</span>
+            <span class="text-xs sm:text-sm font-bold text-emerald-400 flex items-center justify-center gap-1">
+              <CheckCircle2 class="w-3.5 h-3.5" />
+              <span>100% Homologado</span>
+            </span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. Features Grid -->
+    <FeatureGrid 
+      title={`Por Qué Elegir iptv CHILE en ${cityData.name}`}
+      subtitle={`Enrutamiento de baja latencia diseñado para hogares de ${cityData.name} y la ${cityData.region}.`}
+    />
+
+    <!-- 3. Pricing Section (12-Month Plan Prominent) -->
+    <PricingCard 
+      title={`Planes y Precios de IPTV en ${cityData.name}`}
+      subtitle={`Ahorra hasta un 85% comparado con el cable tradicional de ${cityData.name}. Paga en pesos chilenos con WebPay o Mercado Pago.`}
+    />
+
+    <!-- 4. Referrer Banner -->
+    <ReferralBanner />
+
+    <!-- 5. Testimonials -->
+    <UserReviewsSection 
+      title={`Opiniones de Clientes en ${cityData.name} y Alrededores`}
+    />
+
+    <!-- 6. How to Process -->
+    <ProcessSteps />
+
+    <!-- 7. Supported Devices -->
+    <SupportedDevices />
+
+    <!-- 8. Cities (Other Chilean Cities) -->
+    <CitiesList 
+      title="Conectividad en Otras Ciudades de Chile"
+      subtitle="Nodos interconectados a lo largo de todo el territorio chileno."
+    />
+
+    <!-- Editorial In-Depth Local Content (~1,200 Words Context) -->
+    <section class="py-20 bg-[#060609] border-t border-white/5 text-slate-300">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="text-center max-w-3xl mx-auto mb-14">
+          <span class="text-xs uppercase font-bold text-red-400 tracking-wider">Cobertura Regional 2026</span>
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-white mt-2 mb-4 tracking-tight">
+            Guía de Streaming y Televisión Digital en {cityData.name}
+          </h2>
+          <p class="text-sm text-slate-400 leading-relaxed">
+            Todo lo que necesitas saber para disfrutar de chile iptv en {cityData.name} con las mejores operadoras de fibra óptica.
+          </p>
+        </div>
+
+        <div class="prose prose-invert max-w-none space-y-8 text-sm sm:text-base leading-relaxed">
+          
+          <div class="p-8 rounded-3xl bg-[#0D0D14] border border-white/10">
+            <h3 class="text-xl font-bold text-white mb-3 flex items-center gap-2">
+              <Tv class="w-5 h-5 text-red-500" />
+              ¿Por qué los habitantes de {cityData.name} están cortando el cable tradicional?
+            </h3>
+            <p>
+              En <strong>{cityData.name}</strong>, al igual que en las principales ciudades de Chile, las quejas de los usuarios por el costo de la televisión por cable son recurrentes. Planes que prometían tarifas fijas terminan sufriendo reajustes continuos por IPC, cobros de arriendo por cada decodificador en los dormitorios y costos extras desmedidos por contratar paquetes de deportes prémium.
+            </p>
+            <p class="mt-3">
+              Con la llegada de <strong>iptv chile</strong> y nuestro servicio especializado en <strong>{cityData.name}</strong>, los vecinos pueden disfrutar de todas las señales nacionales abiertas en alta definición digital, canales informativos de noticias 24/7 y los torneos deportivos más apasionantes en resolución 4K real por un costo que representa menos del 15% de una factura de cable convencional.
+            </p>
+          </div>
+
+          <div class="p-8 rounded-3xl bg-[#0D0D14] border border-white/10">
+            <h3 class="text-xl font-bold text-white mb-3 flex items-center gap-2">
+              <Zap class="w-5 h-5 text-emerald-400" />
+              Compatibilidad con Proveedores de Internet en {cityData.name}
+            </h3>
+            <p class="mb-4">
+              Nuestra arquitectura de servidores CDN ha sido testeada y optimizada para operar sin congestión en las redes de fibra óptica y cablemódem más populares de {cityData.name}:
+            </p>
+            <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
+              {cityData.isps.map((isp) => (
+                <div class="p-3 rounded-xl bg-white/[0.03] border border-white/5 text-center text-xs font-semibold text-white">
+                  {isp}
+                </div>
+              ))}
+            </div>
+            <p class="mt-4 text-xs text-slate-400">
+              Gracias al enrutamiento dinámico y cifrado de cabeceras, tu proveedor de internet no ralentiza ni aplica throttling a tus transmisiones en horas punta.
+            </p>
+          </div>
+
+          <div class="p-8 rounded-3xl bg-[#0D0D14] border border-white/10">
+            <h3 class="text-xl font-bold text-white mb-3">
+              Pasión Deportiva Local en {cityData.name}: {cityData.teams}
+            </h3>
+            <p>
+              Sabemos que el fútbol en {cityData.name} se vive con pasión. Ya sea apoyando a <strong>{cityData.teams}</strong>, siguiendo la campaña de los equipos grandes del país o sintonizando la Copa Libertadores y la Champions League, en <strong>iptv CHILE</strong> garantizamos que la señal se mantenga nítida a 60 cuadros por segundo, permitiéndote celebrar cada gol en tiempo real y sin retrasos respecto a tus vecinos.
+            </p>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Real-Time Official Live Sports Scores (Bottom Section) -->
+    <LiveScores />
+
+    <!-- 9. Contact Component -->
+    <ContactForm 
+      title={`¿Consultas sobre la Conexión en ${cityData.name}?`}
+      subtitle={`Escríbenos por WhatsApp y te ayudamos a configurar tu Smart TV en ${cityData.name} al tiro.`}
+    />
+
+    <!-- 10. FAQ Section -->
+    <FAQSection />
+
+    <!-- 11. Final CTA Section -->
+    <CTASection 
+      title={`Empieza a Disfrutar de la Mejor Televisión en ${cityData.name}`}
+      description={`Corta el cable hoy mismo en ${cityData.name}. Transmisión 4K, canales en vivo y garantía de 24 horas.`}
+      buttonText="Elegir Mi Plan Anual ($35 USD)"
+    />
+  </main>
+
+  <Footer />
+
+  <!-- Popups -->
+  <FloatingWhatsApp />
+  <SocialPopup />
+  <GroupsPopup />
+  <ExitPopup />
+</Layout>

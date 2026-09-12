@@ -1,0 +1,265 @@
+---
+import { 
+  MapPin, 
+  Mail, 
+  Phone, 
+  Send, 
+  MessageSquare, 
+  ShieldCheck, 
+  Sparkles, 
+  Globe, 
+  Wifi, 
+  CheckCircle2, 
+  HelpCircle,
+  Tv,
+  ArrowUpRight,
+  CreditCard
+} from 'lucide-astro';
+
+const currentYear = new Date().getFullYear();
+
+const corePages = [
+  { name: 'Inicio (Portal Principal)', href: '/' },
+  { name: 'Partidos en Vivo (Marcador Oficial)', href: '/#partidos' },
+  { name: 'Fútbol Chileno & Deportes', href: '/landing-v2' },
+  { name: 'Alternativa al Cable en Chile', href: '/landing-v3' },
+  { name: 'Planes y Suscripciones', href: '/#precios' },
+  { name: 'Dispositivos Compatibles', href: '/#dispositivos' },
+  { name: 'Cómo Instalar (Paso a Paso)', href: '/#proceso' },
+  { name: 'Opiniones de Clientes', href: '/#testimonios' },
+  { name: 'Programa de Referidos (Gana Meses Gratis)', href: '/referral' },
+  { name: 'Ultra IPTV Chile (Review & Comparación)', href: '/ultra-iptv' },
+  { name: 'Página de Contacto Directo', href: '/contact' }
+];
+
+const targetCities = [
+  { name: 'Santiago (Región Metropolitana)', href: '/locations/santiago', status: 'Nodo Central' },
+  { name: 'Valparaíso', href: '/locations/valparaiso', status: 'CDN Costa' },
+  { name: 'Concepción (Biobío)', href: '/locations/concepcion', status: 'Nodo Sur' },
+  { name: 'Viña del Mar', href: '/locations/vina-del-mar', status: 'Alta Velocidad' },
+  { name: 'Antofagasta (Norte)', href: '/locations/antofagasta', status: 'Nodo Minero' },
+  { name: 'Temuco (Araucanía)', href: '/locations/temuco', status: 'CDN Austral' },
+  { name: 'La Serena (Coquimbo)', href: '/locations/la-serena', status: 'Nodo Norte Chico' },
+  { name: 'Puerto Montt (Los Lagos)', href: '/locations/puerto-montt', status: 'Zona Sur' }
+];
+
+const comparisons = [
+  { name: 'iptv CHILE vs Competidores del Mercado', href: '/compare/iptv-chile-vs-competitors' },
+  { name: 'iptv CHILE vs Ultra IPTV', href: '/ultra-iptv' },
+  { name: 'IPTV vs VTR / Movistar / Claro', href: '/guides/mejor-iptv-chile' }
+];
+
+const guideArticles = [
+  { name: '¿Es Legal el IPTV en Chile? Ley 18.168', href: '/guides/iptv-legal-chile' },
+  { name: 'Mejor IPTV Chile 2026: Comparativa y Precios', href: '/guides/mejor-iptv-chile' },
+  { name: 'Cómo Instalar IPTV en Smart TV Samsung y LG', href: '/guides/como-instalar-iptv-smart-tv' },
+  { name: 'Ver Todas las Guías y Tutoriales', href: '/guides' }
+];
+
+const legalPages = [
+  { name: 'Política de Privacidad', href: '/privacy' },
+  { name: 'Términos del Servicio', href: '/terms' },
+  { name: 'Política de Reembolso (24 Horas Estricto)', href: '/refund' },
+  { name: 'Aviso DMCA & Derechos de Autor', href: '/dmca' },
+  { name: 'Descargo de Responsabilidad', href: '/disclaimer' }
+];
+---
+
+<footer class="bg-[#040407] border-t border-white/10 text-slate-400 pt-16 pb-12 relative overflow-hidden" aria-label="Pie de Página">
+  <!-- Decorative ambient top glow -->
+  <div class="absolute top-0 left-1/2 -translate-x-1/2 w-3/4 h-[1px] bg-gradient-to-r from-transparent via-red-600/50 to-transparent"></div>
+
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    
+    <!-- Top Grid: Brand & Global Contact Information -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-12 border-b border-white/10">
+      
+      <!-- Col 1: Brand Info -->
+      <div class="lg:col-span-2 space-y-4">
+        <a href="/" class="inline-flex items-center gap-3 group">
+          <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-red-600 to-blue-800 flex items-center justify-center text-white shadow-md border border-white/20">
+            <svg class="w-5 h-5 fill-white" viewBox="0 0 24 24">
+              <polygon points="5,3 19,12 5,21"/>
+            </svg>
+          </div>
+          <span class="font-extrabold text-2xl tracking-tight text-white">
+            iptv<span class="text-red-500 ml-1">CHILE</span>
+          </span>
+        </a>
+        <p class="text-sm text-slate-300 leading-relaxed max-w-sm">
+          El servicio líder de chile iptv diseñado para hogares chilenos. Transmisiones estables en 4K UHD, fútbol en vivo sin bloqueos y activación inmediata sin contratos abusivos de cable.
+        </p>
+
+        <!-- Direct Contact Info Badges -->
+        <div class="pt-2 space-y-2 text-xs">
+          <div class="flex items-center gap-2 text-slate-200">
+            <MessageSquare class="w-4 h-4 text-emerald-400 shrink-0" />
+            <span>WhatsApp Soporte: <a href="https://wa.me/18036582620" class="text-emerald-400 hover:underline">+1 (803) 658-2620</a></span>
+          </div>
+          <div class="flex items-center gap-2 text-slate-200">
+            <Mail class="w-4 h-4 text-red-400 shrink-0" />
+            <span>Contacto: <a href="mailto:contact@chileiptv.live" class="hover:text-white">contact@chileiptv.live</a></span>
+          </div>
+          <div class="flex items-center gap-2 text-slate-200">
+            <Mail class="w-4 h-4 text-blue-400 shrink-0" />
+            <span>Soporte Técnico: <a href="mailto:support@castvera.com" class="hover:text-white">support@castvera.com</a></span>
+          </div>
+        </div>
+
+        <!-- Official Channels -->
+        <div class="pt-2 flex flex-wrap gap-2">
+          <a 
+            href="https://whatsapp.com/channel/0029VayVaLpD8SE3bf8wMY3v" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            class="px-3 py-1.5 rounded-lg bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-semibold hover:bg-emerald-500/20 flex items-center gap-1.5 transition-colors"
+          >
+            <span>Canal WhatsApp</span>
+            <ArrowUpRight class="w-3.5 h-3.5" />
+          </a>
+          <a 
+            href="https://t.me/castvera_com" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            class="px-3 py-1.5 rounded-lg bg-blue-500/10 border border-blue-500/30 text-blue-400 text-xs font-semibold hover:bg-blue-500/20 flex items-center gap-1.5 transition-colors"
+          >
+            <Send class="w-3.5 h-3.5" />
+            <span>Canal Telegram</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Col 2: Core Pages -->
+      <div>
+        <h3 class="text-white text-sm font-bold tracking-wider uppercase mb-4">Navegación</h3>
+        <ul class="space-y-2 text-xs">
+          {corePages.slice(0, 7).map((page) => (
+            <li>
+              <a href={page.href} class="hover:text-white transition-colors">
+                {page.name}
+              </a>
+            </li>
+          ))}
+          <li>
+            <a href="/referral" class="text-amber-400 hover:text-amber-300 font-semibold flex items-center gap-1">
+              <Sparkles class="w-3 h-3" />
+              <span>Gana Meses Gratis</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Col 3: Competitor & Guides -->
+      <div>
+        <h3 class="text-white text-sm font-bold tracking-wider uppercase mb-4">Guías & Análisis</h3>
+        <ul class="space-y-2 text-xs">
+          {guideArticles.map((art) => (
+            <li>
+              <a href={art.href} class="hover:text-white transition-colors">
+                {art.name}
+              </a>
+            </li>
+          ))}
+        </ul>
+        <h3 class="text-white text-sm font-bold tracking-wider uppercase mt-6 mb-3">Comparativas</h3>
+        <ul class="space-y-2 text-xs">
+          {comparisons.map((comp) => (
+            <li>
+              <a href={comp.href} class="hover:text-white transition-colors">
+                {comp.name}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- Col 4: Legal & Guarantee -->
+      <div>
+        <h3 class="text-white text-sm font-bold tracking-wider uppercase mb-4">Información Legal</h3>
+        <ul class="space-y-2 text-xs">
+          {legalPages.map((leg) => (
+            <li>
+              <a href={leg.href} class="hover:text-white transition-colors">
+                {leg.name}
+              </a>
+            </li>
+          ))}
+        </ul>
+        
+        <div class="mt-6 p-3 rounded-xl bg-white/5 border border-white/10 text-[11px] text-slate-300">
+          <div class="flex items-center gap-1.5 text-emerald-400 font-bold mb-1">
+            <ShieldCheck class="w-4 h-4" />
+            <span>Garantía de 24 Horas</span>
+          </div>
+          <p class="leading-relaxed">
+            Nuestra política de reembolso es válida de forma estricta dentro de las primeras 24 horas tras la activación.
+          </p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Middle Section: Chilean Regional Location Map & City Nodes -->
+    <div class="py-10 border-b border-white/10" id="ciudades">
+      <div class="flex flex-col md:flex-row md:items-center justify-between mb-6">
+        <div>
+          <h3 class="text-white text-base font-bold flex items-center gap-2">
+            <MapPin class="w-4 h-4 text-red-500" />
+            <span>Cobertura y Servidores Locales en Chile</span>
+          </h3>
+          <p class="text-xs text-slate-400 mt-1">
+            Nodos CDN dedicados con enrutamiento de baja latencia para las principales ciudades de Chile:
+          </p>
+        </div>
+        <div class="mt-3 md:mt-0">
+          <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-semibold">
+            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+            <span>Todos los Nodos Chilenos Operativos</span>
+          </span>
+        </div>
+      </div>
+
+      <!-- City Grid -->
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+        {targetCities.map((city) => (
+          <a 
+            href={city.href}
+            class="group p-3 rounded-xl bg-[#0D0D14] border border-white/5 hover:border-red-500/40 hover:bg-white/5 transition-all text-left"
+          >
+            <div class="flex items-center justify-between text-xs font-semibold text-slate-200 group-hover:text-white">
+              <span>{city.name}</span>
+              <ArrowUpRight class="w-3 h-3 text-slate-500 group-hover:text-red-400 transition-colors" />
+            </div>
+            <div class="text-[10px] text-emerald-400 font-medium mt-1">
+              {city.status}
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+
+    <!-- Chilean Payment Gateways Accepted -->
+    <div class="py-8 border-b border-white/10 flex flex-col md:flex-row items-center justify-between gap-4 text-xs">
+      <div class="flex items-center gap-2 text-slate-300">
+        <CreditCard class="w-4 h-4 text-emerald-400" />
+        <span class="font-semibold text-white">Medios de Pago Seguros en Chile:</span>
+        <span class="text-slate-400">WebPay (Redcompra), Mercado Pago (Cuotas sin interés), Flow.cl, Khipu, Tarjetas de Crédito y Criptomonedas (USDT/BTC).</span>
+      </div>
+      <div class="flex items-center gap-2 font-mono text-[11px] text-slate-400">
+        <ShieldCheck class="w-3.5 h-3.5 text-emerald-400" />
+        <span>Pagos Protegidos SSL 256-bit</span>
+      </div>
+    </div>
+
+    <!-- Bottom Disclaimer & Copyright -->
+    <div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-400">
+      <div>
+        © {currentYear} iptv CHILE (chileiptv.live). Todos los derechos reservados.
+      </div>
+      <div class="text-center sm:text-right text-[11px] text-slate-400 max-w-md leading-tight">
+        iptv CHILE es una plataforma de software de streaming independiente. Todos los nombres y logotipos de marcas registradas pertenecen a sus respectivos propietarios legítimos.
+      </div>
+    </div>
+
+  </div>
+</footer>
