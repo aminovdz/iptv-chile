@@ -20,7 +20,12 @@ import ExitPopup from '../components/ExitPopup.astro';
 import GroupsPopup from '../components/GroupsPopup.astro';
 import FloatingWhatsApp from '../components/FloatingWhatsApp.astro';
 import SocialPopup from '../components/SocialPopup.astro';
-import { Tv, Zap, CheckCircle2, ShieldCheck, Flame, Sparkles } from 'lucide-astro';
+import { getCollection } from 'astro:content';
+import { Tv, Zap, CheckCircle2, ShieldCheck, Flame, Sparkles, BookOpen, ChevronRight } from 'lucide-astro';
+
+const recentGuides = (await getCollection('guides'))
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+  .slice(0, 3);
 
 const pageTitle = "Chile IPTV — Servicio Premium de Streaming 4K en Todo Chile | iptv CHILE";
 const pageDescription = "Disfruta de chile iptv con la más alta estabilidad en 4K. Señales nacionales de Chile en vivo, deportes en directo a 60 FPS y app premium gratis en plan anual.";
@@ -167,6 +172,73 @@ const pageDescription = "Disfruta de chile iptv con la más alta estabilidad en 
 
         </div>
 
+      </div>
+    </section>
+
+    <!-- Guías y Blog Destacado (SEO Internal Linking Section) -->
+    <section class="py-20 bg-[#070913] border-t border-white/5">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
+          <div>
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red-600/10 border border-red-500/30 text-red-400 text-xs font-bold uppercase tracking-wider mb-3">
+              <BookOpen class="w-3.5 h-3.5" />
+              <span>Centro de Aprendizaje y Consejos Técnicos</span>
+            </div>
+            <h2 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
+              Guías y Tutoriales para Disfrutar IPTV en Chile
+            </h2>
+            <p class="text-slate-400 text-sm mt-2 max-w-2xl">
+              Manuales paso a paso para configurar tu Smart TV, optimizar tu fibra óptica y resolver dudas sobre la normativa de streaming en Chile.
+            </p>
+          </div>
+          <a
+            href="/guides"
+            class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-white text-xs font-semibold transition-all shrink-0 hover:border-red-500/40"
+          >
+            <span>Ver todas las guías (13)</span>
+            <ChevronRight class="w-4 h-4" />
+          </a>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {recentGuides.map((guide) => (
+            <article class="glass-card rounded-2xl overflow-hidden border border-white/10 hover:border-red-500/40 transition-all duration-300 flex flex-col justify-between group bg-[#0D0D14]/80">
+              <a href={`/guides/${guide.slug}`} class="block overflow-hidden aspect-video bg-slate-900 border-b border-white/5">
+                <img 
+                  src={guide.data.heroImage || '/images/og-chile-iptv.jpg'} 
+                  alt={guide.data.heroImageAlt || guide.data.title}
+                  width="600"
+                  height="338"
+                  loading="lazy"
+                  decoding="async"
+                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                />
+              </a>
+              <div class="p-6 space-y-3 flex-1 flex flex-col justify-between">
+                <div class="space-y-2">
+                  <span class="text-[11px] font-bold text-red-400 uppercase tracking-wider">
+                    {guide.data.category}
+                  </span>
+                  <h3 class="text-base sm:text-lg font-bold text-white group-hover:text-red-400 transition-colors leading-snug line-clamp-2">
+                    <a href={`/guides/${guide.slug}`}>
+                      {guide.data.title}
+                    </a>
+                  </h3>
+                  <p class="text-slate-400 text-xs leading-relaxed line-clamp-2">
+                    {guide.data.description}
+                  </p>
+                </div>
+                <div class="pt-4 border-t border-white/5 flex items-center justify-between text-xs">
+                  <span class="text-slate-500">{guide.data.pubDate.toLocaleDateString('es-CL', { month: 'short', day: 'numeric', year: 'numeric' })}</span>
+                  <a href={`/guides/${guide.slug}`} class="text-red-400 hover:text-red-300 font-semibold flex items-center gap-1">
+                    <span>Leer guía</span>
+                    <ChevronRight class="w-3.5 h-3.5" />
+                  </a>
+                </div>
+              </div>
+            </article>
+          ))}
+        </div>
       </div>
     </section>
 

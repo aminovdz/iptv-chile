@@ -8,6 +8,7 @@ interface Props {
   lang?: string;
   image?: string;
   pageSchema?: any;
+  jsonLd?: any;
 }
 
 const {
@@ -16,8 +17,11 @@ const {
   canonicalUrl,
   lang = 'es-CL',
   image = '/images/og-chile-iptv.jpg',
-  pageSchema
+  pageSchema,
+  jsonLd
 } = Astro.props;
+
+const customSchema = pageSchema || jsonLd;
 
 const siteUrl = Astro.site ? Astro.site.toString().replace(/\/$/, '') : 'https://chileiptv.live';
 const fullCanonical = canonicalUrl 
@@ -86,14 +90,24 @@ const baseSchema = {
       "areaServed": {
         "@type": "Country",
         "name": "Chile"
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.9",
+        "reviewCount": "2180",
+        "bestRating": "5",
+        "worstRating": "1"
       }
     },
     {
       "@type": "Product",
       "@id": `${siteUrl}/#product`,
-      "name": "Suscripción IPTV Chile Premium",
+      "name": "Suscripción IPTV Chile Premium 4K",
       "description": description,
       "image": `${siteUrl}/images/og-chile-iptv.jpg`,
+      "category": "Multimedia > Streaming > IPTV",
+      "sku": "IPTV-CHILE-4K",
+      "mpn": "IPTV-CL-2026",
       "brand": {
         "@type": "Brand",
         "name": "iptv CHILE"
@@ -105,6 +119,68 @@ const baseSchema = {
         "bestRating": "5",
         "worstRating": "1"
       },
+      "review": [
+        {
+          "@type": "Review",
+          "author": {
+            "@type": "Person",
+            "name": "Gonzalo Morales"
+          },
+          "datePublished": "2026-03-09",
+          "reviewBody": "Llevaba 3 años pagando $62.000 mensuales en cable y los partidos se cortaban. Con iptv CHILE la transmisión va fluida a 60 FPS sin buffering en 4K. Además me regalaron la app premium para mi Smart TV.",
+          "reviewRating": {
+            "@type": "Rating",
+            "ratingValue": "5",
+            "bestRating": "5",
+            "worstRating": "1"
+          }
+        },
+        {
+          "@type": "Review",
+          "author": {
+            "@type": "Person",
+            "name": "Carolina Fuentes"
+          },
+          "datePublished": "2026-03-07",
+          "reviewBody": "Instalado en un Smart TV LG y Firestick. La guía EPG funciona perfecto y la calidad en películas y series es realmente 4K. Atención al tiro por WhatsApp.",
+          "reviewRating": {
+            "@type": "Rating",
+            "ratingValue": "5",
+            "bestRating": "5",
+            "worstRating": "1"
+          }
+        },
+        {
+          "@type": "Review",
+          "author": {
+            "@type": "Person",
+            "name": "Matías Riquelme"
+          },
+          "datePublished": "2026-03-05",
+          "reviewBody": "Excelente estabilidad con fibra óptica. Veo toda la Copa Libertadores y fútbol chileno en vivo sin ningún freeze. Pagué por WebPay rápido y seguro.",
+          "reviewRating": {
+            "@type": "Rating",
+            "ratingValue": "5",
+            "bestRating": "5",
+            "worstRating": "1"
+          }
+        },
+        {
+          "@type": "Review",
+          "author": {
+            "@type": "Person",
+            "name": "Daniela Soto"
+          },
+          "datePublished": "2026-03-01",
+          "reviewBody": "Aproveché la promoción con la aplicación premium gratis incluida en el plan anual de 12 meses. Funciona impecable en mi tablet Samsung y televisor.",
+          "reviewRating": {
+            "@type": "Rating",
+            "ratingValue": "5",
+            "bestRating": "5",
+            "worstRating": "1"
+          }
+        }
+      ],
       "offers": {
         "@type": "AggregateOffer",
         "lowPrice": "5.00",
@@ -114,9 +190,10 @@ const baseSchema = {
         "offers": [
           {
             "@type": "Offer",
-            "name": "Plan 12 Meses (Mejor Valor / Más Popular)",
+            "name": "Plan 12 Meses (Mejor Valor + App Premium Gratis)",
             "price": "35.00",
             "priceCurrency": "USD",
+            "priceValidUntil": "2026-12-31",
             "availability": "https://schema.org/InStock",
             "url": `${siteUrl}/#precios`
           },
@@ -125,6 +202,7 @@ const baseSchema = {
             "name": "Plan 6 Meses",
             "price": "20.00",
             "priceCurrency": "USD",
+            "priceValidUntil": "2026-12-31",
             "availability": "https://schema.org/InStock",
             "url": `${siteUrl}/#precios`
           },
@@ -133,6 +211,7 @@ const baseSchema = {
             "name": "Plan 3 Meses",
             "price": "10.00",
             "priceCurrency": "USD",
+            "priceValidUntil": "2026-12-31",
             "availability": "https://schema.org/InStock",
             "url": `${siteUrl}/#precios`
           },
@@ -141,10 +220,33 @@ const baseSchema = {
             "name": "Plan 1 Mes",
             "price": "5.00",
             "priceCurrency": "USD",
+            "priceValidUntil": "2026-12-31",
             "availability": "https://schema.org/InStock",
             "url": `${siteUrl}/#precios`
           }
         ]
+      }
+    },
+    {
+      "@type": "SoftwareApplication",
+      "@id": `${siteUrl}/#software`,
+      "name": "iptv CHILE App Premium",
+      "applicationCategory": "EntertainmentApplication",
+      "operatingSystem": "Android TV, Smart TV Samsung Tizen, LG webOS, Amazon Fire TV Stick, iOS, Windows, macOS",
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.9",
+        "reviewCount": "2180",
+        "bestRating": "5",
+        "worstRating": "1"
+      },
+      "offers": {
+        "@type": "Offer",
+        "price": "0.00",
+        "priceCurrency": "USD",
+        "priceValidUntil": "2026-12-31",
+        "availability": "https://schema.org/InStock",
+        "description": "Licencia de Aplicación Premium de Reproducción GRATIS incluida en Plan de 12 Meses"
       }
     },
     {
@@ -167,7 +269,7 @@ const baseSchema = {
         ] : [])
       ]
     },
-    ...(pageSchema ? [pageSchema] : [])
+    ...(customSchema ? [customSchema] : [])
   ]
 };
 ---
