@@ -25,7 +25,7 @@ const allGuides = await getCollection('guides');
 const relatedGuides = allGuides.filter((g) => g.slug !== guide.slug).slice(0, 3);
 
 const siteUrl = "https://chileiptv.live";
-const pageUrl = `${siteUrl}/guides/${guide.slug}`;
+const pageUrl = `${siteUrl}/guides/${guide.slug}/`;
 
 const articleSchema = {
   "@context": "https://schema.org",
@@ -37,12 +37,12 @@ const articleSchema = {
   "author": {
     "@type": "Organization",
     "name": guide.data.author,
-    "url": siteUrl
+    "url": `${siteUrl}/`
   },
   "publisher": {
     "@type": "Organization",
     "name": "IPTV Chile Oficial",
-    "url": siteUrl,
+    "url": `${siteUrl}/`,
     "logo": {
       "@type": "ImageObject",
       "url": `${siteUrl}/favicon.svg`
@@ -60,7 +60,7 @@ const articleSchema = {
 <Layout 
   title={`${guide.data.title} | Guía IPTV Chile`} 
   description={guide.data.description}
-  canonicalUrl={`/guides/${guide.slug}`}
+  canonicalUrl={`/guides/${guide.slug}/`}
   image={guide.data.heroImage || '/images/og-chile-iptv.jpg'}
   pageSchema={articleSchema}
 >
@@ -73,14 +73,14 @@ const articleSchema = {
       <nav class="flex items-center gap-2 text-xs text-slate-400 mb-8 overflow-x-auto whitespace-nowrap" aria-label="Breadcrumb">
         <a href="/" class="hover:text-primary transition-colors">Inicio</a>
         <span>/</span>
-        <a href="/guides" class="hover:text-primary transition-colors">Guías</a>
+        <a href="/guides/" class="hover:text-primary transition-colors">Guías</a>
         <span>/</span>
         <span class="text-slate-300 truncate max-w-xs">{guide.data.title}</span>
       </nav>
 
       <!-- Back Link -->
       <div class="mb-6">
-        <a href="/guides" class="inline-flex items-center gap-2 text-xs font-semibold text-slate-400 hover:text-white transition-colors">
+        <a href="/guides/" class="inline-flex items-center gap-2 text-xs font-semibold text-slate-400 hover:text-white transition-colors">
           <ArrowLeft class="w-3.5 h-3.5" />
           <span>Volver al índice de guías</span>
         </a>
@@ -204,7 +204,7 @@ const articleSchema = {
           <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {relatedGuides.map((rel) => (
               <a 
-                href={`/guides/${rel.slug}`} 
+                href={`/guides/${rel.slug}/`} 
                 class="glass-card rounded-2xl overflow-hidden border border-white/10 hover:border-primary/40 transition-all group flex flex-col justify-between bg-slate-900/40"
               >
                 {rel.data.heroImage && (

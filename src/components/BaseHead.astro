@@ -16,9 +16,12 @@ const {
 } = Astro.props;
 
 const siteUrl = Astro.site ? Astro.site.toString().replace(/\/$/, '') : 'https://chileiptv.live';
-const fullCanonical = canonicalUrl 
-  ? new URL(canonicalUrl, siteUrl).toString() 
-  : new URL(Astro.url.pathname, siteUrl).toString();
+const rawPath = canonicalUrl || Astro.url.pathname;
+const normalizedCanonical = new URL(rawPath, siteUrl);
+if (!normalizedCanonical.pathname.includes('.') && !normalizedCanonical.pathname.endsWith('/')) {
+  normalizedCanonical.pathname = `${normalizedCanonical.pathname}/`;
+}
+const fullCanonical = normalizedCanonical.toString();
 const ogImageUrl = new URL(image, siteUrl).toString();
 ---
 

@@ -21,55 +21,55 @@ const currentYear = new Date().getFullYear();
 const corePages = [
   { name: 'Inicio (Portal Principal)', href: '/' },
   { name: 'Partidos en Vivo (Marcador Oficial)', href: '/#partidos' },
-  { name: 'Fútbol Chileno & Deportes', href: '/landing-v2' },
-  { name: 'Alternativa al Cable en Chile', href: '/landing-v3' },
+  { name: 'Fútbol Chileno & Deportes', href: '/futbol-chileno/' },
+  { name: 'Alternativa al Cable en Chile', href: '/sin-cable/' },
   { name: 'Planes y Suscripciones', href: '/#precios' },
   { name: 'Dispositivos Compatibles', href: '/#dispositivos' },
   { name: 'Cómo Instalar (Paso a Paso)', href: '/#proceso' },
   { name: 'Opiniones de Clientes', href: '/#testimonios' },
-  { name: 'Programa de Referidos (Gana Meses Gratis)', href: '/referral' },
-  { name: 'Ultra IPTV Chile (Review & Comparación)', href: '/ultra-iptv' },
-  { name: 'Página de Contacto Directo', href: '/contact' }
+  { name: 'Programa de Referidos (Gana Meses Gratis)', href: '/referral/' },
+  { name: 'Ultra IPTV Chile (Review & Comparación)', href: '/ultra-iptv/' },
+  { name: 'Página de Contacto Directo', href: '/contact/' }
 ];
 
 const targetCities = [
-  { name: 'Santiago (Región Metropolitana)', href: '/locations/santiago', status: 'Nodo Central' },
-  { name: 'Valparaíso', href: '/locations/valparaiso', status: 'CDN Costa' },
-  { name: 'Concepción (Biobío)', href: '/locations/concepcion', status: 'Nodo Sur' },
-  { name: 'Viña del Mar', href: '/locations/vina-del-mar', status: 'Alta Velocidad' },
-  { name: 'Antofagasta (Norte)', href: '/locations/antofagasta', status: 'Nodo Minero' },
-  { name: 'Temuco (Araucanía)', href: '/locations/temuco', status: 'CDN Austral' },
-  { name: 'La Serena (Coquimbo)', href: '/locations/la-serena', status: 'Nodo Norte Chico' },
-  { name: 'Puerto Montt (Los Lagos)', href: '/locations/puerto-montt', status: 'Zona Sur' }
+  { name: 'Santiago (Región Metropolitana)', href: '/locations/santiago/', status: 'Nodo Central' },
+  { name: 'Valparaíso', href: '/locations/valparaiso/', status: 'CDN Costa' },
+  { name: 'Concepción (Biobío)', href: '/locations/concepcion/', status: 'Nodo Sur' },
+  { name: 'Viña del Mar', href: '/locations/vina-del-mar/', status: 'Alta Velocidad' },
+  { name: 'Antofagasta (Norte)', href: '/locations/antofagasta/', status: 'Nodo Minero' },
+  { name: 'Temuco (Araucanía)', href: '/locations/temuco/', status: 'CDN Austral' },
+  { name: 'La Serena (Coquimbo)', href: '/locations/la-serena/', status: 'Nodo Norte Chico' },
+  { name: 'Puerto Montt (Los Lagos)', href: '/locations/puerto-montt/', status: 'Zona Sur' }
 ];
 
 const comparisons = [
-  { name: 'iptv CHILE vs Competidores del Mercado', href: '/compare/iptv-chile-vs-competitors' },
-  { name: 'iptv CHILE vs Ultra IPTV', href: '/ultra-iptv' },
-  { name: 'IPTV vs VTR / Movistar / Claro', href: '/guides/mejor-iptv-chile' }
+  { name: 'iptv CHILE vs Competidores del Mercado', href: '/compare/iptv-chile-vs-competitors/' },
+  { name: 'iptv CHILE vs Ultra IPTV', href: '/ultra-iptv/' },
+  { name: 'IPTV vs VTR / Movistar / Claro', href: '/guides/mejor-iptv-chile/' }
 ];
 
 const guideArticles = [
-  { name: '¿Es Legal el IPTV en Chile? Ley 18.168', href: '/guides/iptv-legal-chile' },
-  { name: 'Mejor IPTV Chile 2026: Comparativa y Precios', href: '/guides/mejor-iptv-chile' },
-  { name: 'Cómo Instalar IPTV en Smart TV Samsung y LG', href: '/guides/como-instalar-iptv-smart-tv' },
-  { name: 'IPTV vs. Cable: Ahorra $500.000 al Año', href: '/guides/iptv-vs-cable-tradicional-chile-ahorro' },
-  { name: 'Cómo Evitar Cortes y Buffering en Deportes', href: '/guides/como-evitar-cortes-y-buffering-iptv-chile' },
-  { name: 'Las 5 Mejores Apps IPTV para Smart TV', href: '/guides/mejores-aplicaciones-iptv-smart-tv-chile' },
-  { name: 'Instalar IPTV en Amazon Fire TV Stick', href: '/guides/iptv-en-amazon-fire-tv-stick-guia-paso-a-paso' },
-  { name: 'Qué Velocidad de Internet Necesitas para 4K', href: '/guides/que-velocidad-de-internet-necesito-para-iptv-chile' },
-  { name: '7 Errores Comunes al Contratar IPTV', href: '/guides/errores-comunes-al-contratar-iptv-en-chile-y-como-evitarlos' },
-  { name: 'Guía EPG y Televisión en Diferido', href: '/guides/guia-epg-que-es-y-como-activar-programacion-iptv' },
-  { name: 'IPTV en Zonas Extremas: Arica a Magallanes', href: '/guides/iptv-en-regiones-y-zonas-extremas-chile' },
-  { name: 'Ver Todas las Guías y Tutoriales (13)', href: '/guides' }
+  { name: '¿Es Legal el IPTV en Chile? Ley 18.168', href: '/guides/iptv-legal-chile/' },
+  { name: 'Mejor IPTV Chile 2026: Comparativa y Precios', href: '/guides/mejor-iptv-chile/' },
+  { name: 'Cómo Instalar IPTV en Smart TV Samsung y LG', href: '/guides/como-instalar-iptv-smart-tv/' },
+  { name: 'IPTV vs. Cable: Ahorra $500.000 al Año', href: '/guides/iptv-vs-cable-tradicional-chile-ahorro/' },
+  { name: 'Cómo Evitar Cortes y Buffering en Deportes', href: '/guides/como-evitar-cortes-y-buffering-iptv-chile/' },
+  { name: 'Las 5 Mejores Apps IPTV para Smart TV', href: '/guides/mejores-aplicaciones-iptv-smart-tv-chile/' },
+  { name: 'Instalar IPTV en Amazon Fire TV Stick', href: '/guides/iptv-en-amazon-fire-tv-stick-guia-paso-a-paso/' },
+  { name: 'Qué Velocidad de Internet Necesitas para 4K', href: '/guides/que-velocidad-de-internet-necesito-para-iptv-chile/' },
+  { name: '7 Errores Comunes al Contratar IPTV', href: '/guides/errores-comunes-al-contratar-iptv-en-chile-y-como-evitarlos/' },
+  { name: 'Guía EPG y Televisión en Diferido', href: '/guides/guia-epg-que-es-y-como-activar-programacion-iptv/' },
+  { name: 'IPTV en Zonas Extremas: Arica a Magallanes', href: '/guides/iptv-en-regiones-y-zonas-extremas-chile/' },
+  { name: 'Ver Todas las Guías y Tutoriales (13)', href: '/guides/' }
 ];
 
 const legalPages = [
-  { name: 'Política de Privacidad', href: '/privacy' },
-  { name: 'Términos del Servicio', href: '/terms' },
-  { name: 'Política de Reembolso (24 Horas Estricto)', href: '/refund' },
-  { name: 'Aviso DMCA & Derechos de Autor', href: '/dmca' },
-  { name: 'Descargo de Responsabilidad', href: '/disclaimer' }
+  { name: 'Política de Privacidad', href: '/privacy/' },
+  { name: 'Términos del Servicio', href: '/terms/' },
+  { name: 'Política de Reembolso (24 Horas Estricto)', href: '/refund/' },
+  { name: 'Aviso DMCA & Derechos de Autor', href: '/dmca/' },
+  { name: 'Descargo de Responsabilidad', href: '/disclaimer/' }
 ];
 ---
 
@@ -149,7 +149,7 @@ const legalPages = [
             </li>
           ))}
           <li>
-            <a href="/referral" class="text-amber-400 hover:text-amber-300 font-semibold flex items-center gap-1">
+            <a href="/referral/" class="text-amber-400 hover:text-amber-300 font-semibold flex items-center gap-1">
               <Sparkles class="w-3 h-3" />
               <span>Gana Meses Gratis</span>
             </a>

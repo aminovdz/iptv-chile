@@ -152,9 +152,9 @@ const { cityData } = Astro.props;
 const localBusinessSchema = {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
-  "@id": `https://chileiptv.live/locations/${cityData.slug}#localbusiness`,
+  "@id": `https://chileiptv.live/locations/${cityData.slug}/#localbusiness`,
   "name": `iptv CHILE — ${cityData.name}`,
-  "url": `https://chileiptv.live/locations/${cityData.slug}`,
+  "url": `https://chileiptv.live/locations/${cityData.slug}/`,
   "telephone": "+18036582620",
   "priceRange": "$5 - $35 USD",
   "address": {
@@ -196,7 +196,7 @@ const localBusinessSchema = {
 <Layout 
   title={cityData.title}
   description={cityData.metaDescription}
-  canonicalUrl={`/locations/${cityData.slug}`}
+  canonicalUrl={`/locations/${cityData.slug}/`}
   pageSchema={localBusinessSchema}
 >
   <StickyHeader />

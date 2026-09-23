@@ -24,9 +24,12 @@ const {
 const customSchema = pageSchema || jsonLd;
 
 const siteUrl = Astro.site ? Astro.site.toString().replace(/\/$/, '') : 'https://chileiptv.live';
-const fullCanonical = canonicalUrl 
-  ? new URL(canonicalUrl, siteUrl).toString() 
-  : new URL(Astro.url.pathname, siteUrl).toString();
+const rawPath = canonicalUrl || Astro.url.pathname;
+const normalizedCanonical = new URL(rawPath, siteUrl);
+if (!normalizedCanonical.pathname.includes('.') && !normalizedCanonical.pathname.endsWith('/')) {
+  normalizedCanonical.pathname = `${normalizedCanonical.pathname}/`;
+}
+const fullCanonical = normalizedCanonical.toString();
 
 // Base Organization & LocalBusiness JSON-LD Schema
 const baseSchema = {
@@ -36,7 +39,7 @@ const baseSchema = {
       "@type": "Organization",
       "@id": `${siteUrl}/#organization`,
       "name": "iptv CHILE",
-      "url": siteUrl,
+      "url": `${siteUrl}/`,
       "logo": {
         "@type": "ImageObject",
         "url": `${siteUrl}/favicon.svg`,
@@ -257,7 +260,7 @@ const baseSchema = {
           "@type": "ListItem",
           "position": 1,
           "name": "Inicio",
-          "item": siteUrl
+          "item": `${siteUrl}/`
         },
         ...(Astro.url.pathname !== '/' ? [
           {
