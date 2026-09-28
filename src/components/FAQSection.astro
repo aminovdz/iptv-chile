@@ -11,9 +11,10 @@ const {
   subtitle = 'Resolvemos todas tus dudas técnicas, legales y comerciales antes de contratar tu plan.'
 } = Astro.props;
 
+const currentYear = new Date().getFullYear();
 const faqs = [
   {
-    question: '¿Cuál es el mejor IPTV en Chile en 2026?',
+    question: `¿Cuál es el mejor IPTV en Chile en ${currentYear}?`,
     answer: 'iptv CHILE está considerado como el mejor servicio de IPTV en Chile gracias a sus servidores dedicados con tecnología Anti-Cortes 9.2, transmisión en 4K real a 60 FPS, cobertura total de señales nacionales en HD y eventos deportivos en vivo. Además, ofrece activación al tiro por WhatsApp y compatibilidad universal.'
   },
   {

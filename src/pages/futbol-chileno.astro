@@ -40,6 +40,9 @@ const pageDescription = "Sintoniza todos los partidos de Colo-Colo, U. de Chile,
       subheadline="Vive la emoción de cada partido del Campeonato Nacional Chileno, la Copa Libertadores y la Champions League con chile iptv en 60 FPS reales. Olvídate de pagar tarifas absurdas a operadores de cable y disfruta de la mejor transmisión deportiva en tu Smart TV o celular."
     />
 
+    <!-- Real-Time Live Sports Scores Infinite Loop Carousel -->
+    <LiveScores />
+
     <!-- Visual Proof Banner: Sports in 4K -->
     <section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 my-10">
       <div class="rounded-3xl overflow-hidden border border-red-500/20 shadow-2xl shadow-red-500/10 bg-[#0d0f18] relative group">
@@ -108,7 +111,7 @@ const pageDescription = "Sintoniza todos los partidos de Colo-Colo, U. de Chile,
       <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         
         <div class="text-center max-w-3xl mx-auto mb-14">
-          <span class="text-xs uppercase font-bold text-red-400 tracking-wider">Especial Deportes 2026</span>
+          <span class="text-xs uppercase font-bold text-red-400 tracking-wider">Especial Deportes {new Date().getFullYear()}</span>
           <h2 class="text-3xl sm:text-4xl font-extrabold text-white mt-2 mb-4 tracking-tight">
             Guía Definitiva para Ver Fútbol Chileno e Internacional en Vivo por Internet
           </h2>
@@ -193,9 +196,6 @@ const pageDescription = "Sintoniza todos los partidos de Colo-Colo, U. de Chile,
 
       </div>
     </section>
-
-    <!-- Real-Time Official Live Sports Scores (Bottom Section) -->
-    <LiveScores />
 
     <!-- 9. Contact Component -->
     <ContactForm 

@@ -8,9 +8,10 @@ interface Props {
   badge?: string;
 }
 
+const currentYear = new Date().getFullYear();
 const {
   city,
-  badge = '🇨🇱 El Proveedor IPTV #1 en Chile para 2026',
+  badge = `🇨🇱 El Proveedor IPTV #1 en Chile para ${currentYear}`,
   headline = city 
     ? `Mejor IPTV Chile en ${city} — Transmisión 4K y Servidores Anti-Cortes` 
     : 'Chile IPTV — Canales Chilenos e Internacionales en Vivo y Calidad 4K',

@@ -12,7 +12,8 @@ import ExitPopup from '../components/ExitPopup.astro';
 import SocialPopup from '../components/SocialPopup.astro';
 import { Award, Check, X, ShieldCheck, Sparkles, Star, Zap, HelpCircle } from 'lucide-astro';
 
-const pageTitle = "Ultra IPTV Chile Review 2026 — ¿Vale la Pena? Precios, Canales y Alternativas";
+const currentYear = new Date().getFullYear();
+const pageTitle = `Ultra IPTV Chile Review ${currentYear} — ¿Vale la Pena? Precios, Canales y Alternativas`;
 const pageDescription = "Análisis completo de Ultra IPTV en Chile. Descubre opiniones, precios, estabilidad de canales y por qué iptv CHILE es la alternativa #1 sin cortes.";
 ---
 
@@ -33,10 +34,10 @@ const pageDescription = "Análisis completo de Ultra IPTV en Chile. Descubre opi
       <div class="text-center max-w-3xl mx-auto mb-16">
         <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-purple-600/15 border border-purple-500/30 text-purple-300 text-xs font-bold uppercase tracking-wider mb-4">
           <Award class="w-3.5 h-3.5" />
-          <span>Análisis y Evaluación Imparcial 2026</span>
+          <span>Análisis y Evaluación Imparcial {currentYear}</span>
         </div>
         <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight mb-4">
-          Ultra IPTV Chile Review: ¿Vale la Pena Contratar en 2026?
+          Ultra IPTV Chile Review: ¿Vale la Pena Contratar en {currentYear}?
         </h1>
         <p class="text-base sm:text-lg text-slate-300 leading-relaxed">
           Probamos y analizamos el servicio de Ultra IPTV en Chile: revisamos su calidad de servidores, canales deportivos de fútbol chileno, opciones de pago y la mejor alternativa del mercado.

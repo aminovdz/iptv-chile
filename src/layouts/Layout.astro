@@ -24,6 +24,7 @@ const {
 const customSchema = pageSchema || jsonLd;
 
 const siteUrl = Astro.site ? Astro.site.toString().replace(/\/$/, '') : 'https://chileiptv.live';
+const currentYear = new Date().getFullYear();
 const rawPath = canonicalUrl || Astro.url.pathname;
 const normalizedCanonical = new URL(rawPath, siteUrl);
 if (!normalizedCanonical.pathname.includes('.') && !normalizedCanonical.pathname.endsWith('/')) {
@@ -110,7 +111,7 @@ const baseSchema = {
       "image": `${siteUrl}/images/og-chile-iptv.jpg`,
       "category": "Multimedia > Streaming > IPTV",
       "sku": "IPTV-CHILE-4K",
-      "mpn": "IPTV-CL-2026",
+      "mpn": `IPTV-CL-${currentYear}`,
       "brand": {
         "@type": "Brand",
         "name": "iptv CHILE"
@@ -196,7 +197,7 @@ const baseSchema = {
             "name": "Plan 12 Meses (Mejor Valor + App Premium Gratis)",
             "price": "35.00",
             "priceCurrency": "USD",
-            "priceValidUntil": "2026-12-31",
+            "priceValidUntil": `${currentYear}-12-31`,
             "availability": "https://schema.org/InStock",
             "url": `${siteUrl}/#precios`
           },
@@ -205,7 +206,7 @@ const baseSchema = {
             "name": "Plan 6 Meses",
             "price": "20.00",
             "priceCurrency": "USD",
-            "priceValidUntil": "2026-12-31",
+            "priceValidUntil": `${currentYear}-12-31`,
             "availability": "https://schema.org/InStock",
             "url": `${siteUrl}/#precios`
           },
@@ -214,7 +215,7 @@ const baseSchema = {
             "name": "Plan 3 Meses",
             "price": "10.00",
             "priceCurrency": "USD",
-            "priceValidUntil": "2026-12-31",
+            "priceValidUntil": `${currentYear}-12-31`,
             "availability": "https://schema.org/InStock",
             "url": `${siteUrl}/#precios`
           },
@@ -223,7 +224,7 @@ const baseSchema = {
             "name": "Plan 1 Mes",
             "price": "5.00",
             "priceCurrency": "USD",
-            "priceValidUntil": "2026-12-31",
+            "priceValidUntil": `${currentYear}-12-31`,
             "availability": "https://schema.org/InStock",
             "url": `${siteUrl}/#precios`
           }
@@ -247,7 +248,7 @@ const baseSchema = {
         "@type": "Offer",
         "price": "0.00",
         "priceCurrency": "USD",
-        "priceValidUntil": "2026-12-31",
+        "priceValidUntil": `${currentYear}-12-31`,
         "availability": "https://schema.org/InStock",
         "description": "Licencia de Aplicación Premium de Reproducción GRATIS incluida en Plan de 12 Meses"
       }

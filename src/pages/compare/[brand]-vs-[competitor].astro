@@ -15,12 +15,13 @@ import { ShieldCheck, Check, X, Sparkles, Award, Zap, ArrowRight, Tv } from 'luc
 export const prerender = true;
 
 export async function getStaticPaths() {
+  const currentYear = new Date().getFullYear();
   const comparisons = [
     {
       brand: 'iptv-chile',
       competitor: 'competitors',
       slug: 'iptv-chile-vs-competitors',
-      title: 'iptv CHILE vs. Competidores del Mercado 2026 — Comparación Honesta',
+      title: `iptv CHILE vs. Competidores del Mercado ${currentYear} — Comparación Honesta`,
       metaDescription: 'Comparativa transparente entre iptv CHILE y otros servicios del mercado chileno. Descubre por qué destacamos en estabilidad 4K, soporte WhatsApp y precios.',
       competitorName: 'Servicios Genéricos de IPTV',
       intro: 'Al buscar un servicio de streaming en Chile, muchos usuarios se encuentran con revendedores improvisados que prometen listas infinitas pero sufren caídas constantes durante los partidos de fútbol. Aquí analizamos objetivamente las diferencias técnicas y de servicio.'
@@ -113,7 +114,7 @@ const comparisonPoints = [
       <div class="text-center max-w-3xl mx-auto mb-16">
         <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-red-600/10 border border-red-500/30 text-red-400 text-xs font-bold uppercase tracking-wider mb-4">
           <Award class="w-3.5 h-3.5" />
-          <span>Análisis Comparativo E-E-A-T 2026</span>
+          <span>Análisis Comparativo E-E-A-T {new Date().getFullYear()}</span>
         </div>
         <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight mb-4">
           {compData.title}

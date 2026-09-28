@@ -41,6 +41,9 @@ const pageDescription = "Disfruta de chile iptv con la más alta estabilidad en 
     <!-- 1. Hero Section -->
     <Hero />
 
+    <!-- Real-Time Live Sports Scores Infinite Loop Carousel -->
+    <LiveScores />
+
     <!-- 2. Features Grid -->
     <FeatureGrid 
       title="Por Qué iptv CHILE es el Mejor Servicio de Streaming en el País"
@@ -70,7 +73,7 @@ const pageDescription = "Disfruta de chile iptv con la más alta estabilidad en 
       <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         
         <div class="text-center max-w-3xl mx-auto mb-14">
-          <span class="text-xs uppercase font-bold text-red-400 tracking-wider">Guía Especializada 2026</span>
+          <span class="text-xs uppercase font-bold text-red-400 tracking-wider">Guía Especializada {new Date().getFullYear()}</span>
           <h2 class="text-3xl sm:text-4xl font-extrabold text-white mt-2 mb-4 tracking-tight">
             Todo lo que Debes Saber Sobre Chile IPTV y la Nueva Era de Televisión Digital
           </h2>
@@ -241,9 +244,6 @@ const pageDescription = "Disfruta de chile iptv con la más alta estabilidad en 
         </div>
       </div>
     </section>
-
-    <!-- Real-Time Official Live Sports Scores (Bottom Section) -->
-    <LiveScores />
 
     <!-- 9. Contact Component -->
     <ContactForm />

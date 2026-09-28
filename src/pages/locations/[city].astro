@@ -25,6 +25,7 @@ import { MapPin, Wifi, Server, ShieldCheck, Zap, Tv, CheckCircle2, ArrowRight } 
 export const prerender = true;
 
 export async function getStaticPaths() {
+  const currentYear = new Date().getFullYear();
   const cities = [
     {
       slug: 'santiago',
@@ -34,7 +35,7 @@ export async function getStaticPaths() {
       node: 'Santiago Centro Edge Datacenter',
       population: '7.1M+ (Gran Santiago)',
       headline: 'Mejor IPTV Chile en Santiago — 4K en Vivo, Deportes & Señales Nacionales',
-      title: 'Mejor IPTV Santiago Chile 2026 — Transmisión 4K sin Cortes en la RM',
+      title: `Mejor IPTV Santiago Chile ${currentYear} — Transmisión 4K sin Cortes en la RM`,
       metaDescription: 'Descubre el mejor servicio de chile iptv en Santiago. Mira Colo-Colo, la U, fútbol en vivo y canales nacionales en 4K sin cortes con servidores locales en la RM.',
       teams: 'Colo-Colo, Universidad de Chile, Unión Española, Palestino, Audax Italiano, Magallanes',
       isps: ['VTR Fibra', 'Movistar Fibra', 'Entel Fibra', 'Mundo Pacífico', 'Claro Chile'],
@@ -48,7 +49,7 @@ export async function getStaticPaths() {
       node: 'Valparaíso Puerto CDN Hub',
       population: '980K+ (Gran Valparaíso)',
       headline: 'Mejor IPTV Chile en Valparaíso — Señal 4K Estable para el Puerto',
-      title: 'IPTV Valparaíso Chile 2026 — Señales en Vivo, Deportes & 4K UHD',
+      title: `IPTV Valparaíso Chile ${currentYear} — Señales en Vivo, Deportes & 4K UHD`,
       metaDescription: 'Accede a iptv chile en Valparaíso y Playa Ancha. Disfruta del fútbol chileno, canales nacionales e internacionales en 4K sin pagar de más por cable.',
       teams: 'Santiago Wanderers, Everton, Unión La Calera, San Luis de Quillota',
       isps: ['VTR', 'Movistar Fibra', 'Mundo Pacífico', 'Claro', 'Entel'],
@@ -62,7 +63,7 @@ export async function getStaticPaths() {
       node: 'Concepción Biobío Fiber Node',
       population: '1.0M+ (Gran Concepción)',
       headline: 'Mejor IPTV Chile en Concepción — Transmisión 4K en Todo el Biobío',
-      title: 'IPTV Concepción Chile 2026 — Fútbol en Vivo, Deportes & Canales HD',
+      title: `IPTV Concepción Chile ${currentYear} — Fútbol en Vivo, Deportes & Canales HD`,
       metaDescription: 'Disfruta de chile iptv en Concepción, Talcahuano y San Pedro de la Paz. Streaming 4K ultraestable con soporte inmediato por WhatsApp.',
       teams: 'Huachipato, Deportes Concepción, Fernández Vial, Universidad de Concepción',
       isps: ['Mundo Pacífico Fibra', 'Movistar Fibra', 'VTR Biobío', 'Claro', 'Entel'],
@@ -76,7 +77,7 @@ export async function getStaticPaths() {
       node: 'Viña del Mar Costa CDN Hub',
       population: '360K+ (Ciudad Jardín)',
       headline: 'Mejor IPTV Chile en Viña del Mar — Streaming 4K para la Ciudad Jardín',
-      title: 'IPTV Viña del Mar Chile 2026 — Canales en Vivo 4K y Deportes sin Cortes',
+      title: `IPTV Viña del Mar Chile ${currentYear} — Canales en Vivo 4K y Deportes sin Cortes`,
       metaDescription: 'El servicio #1 de iptv chile en Viña del Mar, Reñaca y Concón. Mira fútbol en vivo y canales nacionales en Smart TV y Firestick.',
       teams: 'Everton de Viña del Mar, Santiago Wanderers',
       isps: ['VTR Fibra', 'Movistar Fibra', 'Entel', 'Claro', 'Mundo Pacífico'],
@@ -90,7 +91,7 @@ export async function getStaticPaths() {
       node: 'Antofagasta Norte Grande Server Node',
       population: '430K+ (Perla del Norte)',
       headline: 'Mejor IPTV Chile en Antofagasta — Streaming 4K en el Norte Grande',
-      title: 'IPTV Antofagasta Chile 2026 — Deportes en Vivo, Fútbol & Canales 4K',
+      title: `IPTV Antofagasta Chile ${currentYear} — Deportes en Vivo, Fútbol & Canales 4K`,
       metaDescription: 'Sintoniza chile iptv en Antofagasta y Calama. Conexión de alta fidelidad para campamentos y hogares mineros sin pagar tarifas excesivas de cable.',
       teams: 'Deportes Antofagasta, Cobreloa (Calama)',
       isps: ['Entel Fibra', 'Movistar Fibra', 'VTR', 'Claro', 'Mundo'],
@@ -104,7 +105,7 @@ export async function getStaticPaths() {
       node: 'Temuco Araucanía CDN Cluster',
       population: '320K+ (Temuco & Padre Las Casas)',
       headline: 'Mejor IPTV Chile en Temuco — Canales Nacionales y Fútbol en 4K',
-      title: 'IPTV Temuco Chile 2026 — Transmisión Estable sin Freeze en La Araucanía',
+      title: `IPTV Temuco Chile ${currentYear} — Transmisión Estable sin Freeze en La Araucanía`,
       metaDescription: 'La mejor experiencia de iptv chile en Temuco y Padre Las Casas. Toda la Liga Chilena y señales abiertas en 4K UHD con activación al tiro por WhatsApp.',
       teams: 'Deportes Temuco, Malleco Unido',
       isps: ['Mundo Pacífico', 'Movistar Fibra', 'VTR', 'Entel'],
@@ -118,7 +119,7 @@ export async function getStaticPaths() {
       node: 'La Serena & Coquimbo Regional Node',
       population: '500K+ (Conurbación La Serena - Coquimbo)',
       headline: 'Mejor IPTV Chile en La Serena y Coquimbo — Señales 4K sin Interrupciones',
-      title: 'IPTV La Serena Chile 2026 — Transmisiones Deportivas y Canales en Vivo',
+      title: `IPTV La Serena Chile ${currentYear} — Transmisiones Deportivas y Canales en Vivo`,
       metaDescription: 'Contrata chile iptv en La Serena y Coquimbo. Fútbol chileno sin cortes, canales de noticias y series en 4K con activación en 2 minutos.',
       teams: 'Club Deportes La Serena, Coquimbo Unido',
       isps: ['Movistar Fibra', 'VTR', 'Mundo Pacífico', 'Claro', 'Entel'],
@@ -132,7 +133,7 @@ export async function getStaticPaths() {
       node: 'Puerto Montt Austral Edge CDN',
       population: '270K+ (Los Lagos)',
       headline: 'Mejor IPTV Chile en Puerto Montt — Streaming 4K para el Sur Austral',
-      title: 'IPTV Puerto Montt Chile 2026 — Cobertura Total en el Sur Austral en 4K',
+      title: `IPTV Puerto Montt Chile ${currentYear} — Cobertura Total en el Sur Austral en 4K`,
       metaDescription: 'Disfruta de iptv chile en Puerto Montt y Puerto Varas. Canales nacionales y deportes en directo con la mayor estabilidad del mercado.',
       teams: 'Deportes Puerto Montt, Provincial Osorno',
       isps: ['Telsur / Gtd', 'Movistar Fibra', 'Mundo Pacífico', 'Entel'],
@@ -210,6 +211,9 @@ const localBusinessSchema = {
       subheadline={cityData.intro}
     />
 
+    <!-- Real-Time Live Sports Scores Infinite Loop Carousel -->
+    <LiveScores />
+
     <!-- Local Server Node Telemetry Box -->
     <section class="py-8 bg-[#0D0D14] border-y border-white/5">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -285,7 +289,7 @@ const localBusinessSchema = {
       <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         
         <div class="text-center max-w-3xl mx-auto mb-14">
-          <span class="text-xs uppercase font-bold text-red-400 tracking-wider">Cobertura Regional 2026</span>
+          <span class="text-xs uppercase font-bold text-red-400 tracking-wider">Cobertura Regional {new Date().getFullYear()}</span>
           <h2 class="text-3xl sm:text-4xl font-extrabold text-white mt-2 mb-4 tracking-tight">
             Guía de Streaming y Televisión Digital en {cityData.name}
           </h2>
@@ -342,9 +346,6 @@ const localBusinessSchema = {
 
       </div>
     </section>
-
-    <!-- Real-Time Official Live Sports Scores (Bottom Section) -->
-    <LiveScores />
 
     <!-- 9. Contact Component -->
     <ContactForm 
